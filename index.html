@@ -6,7 +6,7 @@
   <meta name="color-scheme" content="dark light">
   <title>ASIXBOT // Infraestrutura Autônoma de Agentes de IA & Operação Local-First</title>
   <meta name="description" content="Infraestrutura corporativa de agentes autônomos de IA. Orquestre Claude Code, Codex, Gemini, Grok e Ollama no seu próprio servidor ou desktop com automação Chromium CDP, WhatsApp e soberania LGPD.">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'%3E%3Crect width='240' height='240' rx='36' fill='%230c0b09'/%3E%3Cpolygon points='120,20 206,70 206,170 120,220 34,170 34,70' fill='%23161412' stroke='%23ff4820' stroke-width='8' stroke-linejoin='round'/%3E%3Cpolygon points='120,56 176,88 176,152 120,184 64,152 64,88' fill='none' stroke='%23f6f3ec' stroke-width='5' stroke-opacity='0.35'/%3E%3Ccircle cx='120' cy='120' r='34' fill='%23ff4820'/%3E%3Ccircle cx='120' cy='120' r='14' fill='%230c0b09'/%3E%3Ccircle cx='128' cy='112' r='6' fill='%23c8f53b'/%3E%3Cpath d='M120 20v36M120 184v36M34 70l30 18M176 152l30 18M206 70l-30 18M64 152l-30 18' stroke='%23ff4820' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'%3E%3Crect width='240' height='240' rx='36' fill='%23101820'/%3E%3Cpolygon points='120,20 206,70 206,170 120,220 34,170 34,70' fill='%23354B60' stroke='%237394AC' stroke-width='8' stroke-linejoin='round'/%3E%3Cpolygon points='120,56 176,88 176,152 120,184 64,152 64,88' fill='none' stroke='%23B8D0DE' stroke-width='5' stroke-opacity='0.5'/%3E%3Ccircle cx='120' cy='120' r='34' fill='%237394AC'/%3E%3Ccircle cx='120' cy='120' r='14' fill='%23101820'/%3E%3Ccircle cx='128' cy='112' r='6' fill='%23F0F5F7'/%3E%3Cpath d='M120 20v36M120 184v36M34 70l30 18M176 152l30 18M206 70l-30 18M64 152l-30 18' stroke='%23B8D0DE' stroke-width='5' stroke-linecap='round'/%3E%3C/svg%3E">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +15,7 @@
   <style>
     @font-face {
       font-family: "Inter Fallback";
-      src: local("Arial"), local("ArialMT");
+      src: local("Helvetica Neue"), local("Arial"), local("ArialMT");
       size-adjust: 107.12%;
       ascent-override: 90.44%;
       descent-override: 22.52%;
@@ -28,44 +28,44 @@
       --in-oklch: ;
 
       /* ========================================================================
-         ASIXBOT BESPOKE PALETTE — Volcanic Basalt + Warm Alabaster + Signal Vermilion
-         (Zero OpenBot tokens, zero generic AI indigo/purple)
+         ASIXBOT GLACIAL NORDIC PALETTE
+         Exact 5-Color System: #101820 · #354B60 · #7394AC · #B8D0DE · #F0F5F7
          ======================================================================== */
-      --bg-obsidian: #0c0b09;
-      --bg-basalt: #13110e;
-      --bg-module: #1a1713;
-      --bg-elevated: #221e19;
-      --bg-glass: rgba(19, 17, 14, 0.82);
+      --bg-obsidian: #101820;
+      --bg-basalt: #182532;
+      --bg-module: #223344;
+      --bg-elevated: #354B60;
+      --bg-glass: rgba(53, 75, 96, 0.36);
 
-      /* Contrast Editorial Room (Warm Architectural Paper) */
-      --room-paper: #f3efe6;
-      --room-paper-card: #faf7f0;
-      --room-paper-ink: #12100d;
-      --room-paper-muted: #57524a;
-      --room-paper-line: rgba(18, 16, 13, 0.14);
+      /* Contrast Editorial Room (#F0F5F7 Arctic Porcelain + #101820 Ink) */
+      --room-paper: #F0F5F7;
+      --room-paper-card: #ffffff;
+      --room-paper-ink: #101820;
+      --room-paper-muted: #354B60;
+      --room-paper-line: rgba(53, 75, 96, 0.2);
 
-      /* 4-Step Neutral Hierarchy on Obsidian */
-      --text-ivory: #f6f3ec;
-      --text-stone: #c5beb2;
-      --text-ash: #8a8275;
-      --text-char: #5a5349;
+      /* 4-Step Typographic Hierarchy on #101820 */
+      --text-ivory: #F0F5F7;
+      --text-stone: #B8D0DE;
+      --text-ash: #7394AC;
+      --text-char: #354B60;
 
-      /* Signature Industrial Accents (Awwwards Monochrome + Pop) */
-      --signal-vermilion: #ff4820;
-      --signal-vermilion-soft: rgba(255, 72, 32, 0.14);
-      --phosphor-volt: #c8f53b;
-      --phosphor-volt-soft: rgba(200, 245, 59, 0.14);
-      --amber-core: #f59e0b;
-      --cryo-cyan: #22d3ee;
+      /* Signature Glacial Accents */
+      --signal-vermilion: #7394AC;
+      --signal-vermilion-soft: rgba(115, 148, 172, 0.2);
+      --phosphor-volt: #B8D0DE;
+      --phosphor-volt-soft: rgba(184, 208, 222, 0.16);
+      --amber-core: #7394AC;
+      --cryo-cyan: #B8D0DE;
 
-      /* Architectural Hairlines */
-      --line-subtle: rgba(246, 243, 236, 0.08);
-      --line-strong: rgba(246, 243, 236, 0.18);
-      --line-vermilion: rgba(255, 72, 32, 0.45);
+      /* Frosted Glass Hairlines */
+      --line-subtle: rgba(184, 208, 222, 0.15);
+      --line-strong: rgba(184, 208, 222, 0.34);
+      --line-vermilion: rgba(115, 148, 172, 0.55);
 
-      /* Typography Families */
-      --font-display: "Inter", "Inter Fallback", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      --font-sans: "Inter", "Inter Fallback", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      /* Typography Families (Helvetica Neue + Inter + Instrument Serif + JetBrains Mono) */
+      --font-display: "Helvetica Neue", "Inter", "Inter Fallback", -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-sans: "Helvetica Neue", "Inter", "Inter Fallback", -apple-system, BlinkMacSystemFont, sans-serif;
       --font-serif: "Instrument Serif", Georgia, serif;
       --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
@@ -333,11 +333,11 @@
     }
 
     .btn-vermilion {
-      background: var(--signal-vermilion);
-      color: #0c0b09;
+      background: #F0F5F7;
+      color: #101820;
       font-weight: 700;
-      border: 1px solid var(--signal-vermilion);
-      box-shadow: 0 10px 30px rgba(255, 72, 32, 0.25);
+      border: 1px solid #B8D0DE;
+      box-shadow: 0 12px 32px rgba(16, 24, 32, 0.45);
     }
 
     .btn-vermilion::before {
@@ -345,7 +345,7 @@
       position: absolute;
       inset: 0;
       z-index: -1;
-      background: var(--phosphor-volt);
+      background: #B8D0DE;
       transform: scaleX(0);
       transform-origin: right;
       transition: transform 380ms var(--ease-out-expo);
@@ -357,14 +357,16 @@
     }
 
     .btn-outline {
-      background: var(--bg-module);
+      background: rgba(53, 75, 96, 0.42);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       color: var(--text-ivory);
       border: 1px solid var(--line-strong);
     }
 
     .btn-outline:hover {
-      border-color: var(--signal-vermilion);
-      color: var(--signal-vermilion);
+      border-color: #F0F5F7;
+      color: #F0F5F7;
     }
 
     .btn-sm {
@@ -373,18 +375,16 @@
     }
 
     /* ==========================================================================
-       4. Asymmetric 12-Column Split Hero + Blueprint Grid
+       4. Asymmetric 12-Column Split Hero + Atmospheric Glacial Bloom
        ========================================================================== */
     .hero-section {
       position: relative;
       padding: clamp(44px, 6vw, 88px) 0 clamp(64px, 8vw, 112px);
       border-bottom: 1px solid var(--line-subtle);
       background:
-        radial-gradient(circle at 14% 18%, rgba(255, 72, 32, 0.12), transparent 42%),
-        radial-gradient(circle at 86% 72%, rgba(200, 245, 59, 0.07), transparent 45%),
-        linear-gradient(to right, rgba(246, 243, 236, 0.03) 1px, transparent 1px) 0 0 / 64px 64px,
-        linear-gradient(to bottom, rgba(246, 243, 236, 0.03) 1px, transparent 1px) 0 0 / 64px 64px,
-        var(--bg-obsidian);
+        radial-gradient(ellipse 62% 75% at 8% 46%, rgba(240, 245, 247, 0.24) 0%, rgba(184, 208, 222, 0.22) 28%, rgba(115, 148, 172, 0.18) 54%, transparent 78%),
+        radial-gradient(ellipse 58% 64% at 78% 24%, rgba(53, 75, 96, 0.55) 0%, transparent 70%),
+        linear-gradient(135deg var(--in-oklab), #1f3142 0%, #101820 58%, #0c131a 100%);
     }
 
     .hero-split-grid {
@@ -405,26 +405,31 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 6px 12px;
-      border-radius: 4px;
-      background: var(--signal-vermilion-soft);
-      border-left: 3px solid var(--signal-vermilion);
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(53, 75, 96, 0.48);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--line-strong);
       font-family: var(--font-mono);
       font-size: 11.5px;
       font-weight: 500;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--signal-vermilion);
+      color: #F0F5F7;
     }
 
     .hero-headline {
       margin-top: 22px;
       font-family: var(--font-display);
       font-size: var(--text-hero);
-      font-weight: 700;
+      font-weight: 600;
       line-height: 0.96;
-      letter-spacing: -0.055em;
-      color: var(--text-ivory);
+      letter-spacing: -0.05em;
+      background: linear-gradient(92deg var(--in-oklab), #F0F5F7 0%, #B8D0DE 56%, #7394AC 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
       text-wrap: balance;
     }
 
@@ -436,7 +441,8 @@
       font-weight: 400;
       font-size: 1.08em;
       letter-spacing: -0.015em;
-      color: var(--signal-vermilion);
+      color: #B8D0DE;
+      -webkit-text-fill-color: #B8D0DE;
     }
 
     .hero-lead {
@@ -460,10 +466,12 @@
       display: inline-flex;
       align-items: center;
       gap: 7px;
-      padding: 5px 11px;
-      border-radius: 6px;
-      background: var(--bg-module);
-      border: 1px solid var(--line-subtle);
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: rgba(53, 75, 96, 0.42);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid var(--line-strong);
       font-family: var(--font-mono);
       font-size: 12px;
       color: var(--text-ivory);
@@ -519,7 +527,7 @@
     }
 
     .cli-copy-trigger:hover {
-      background: rgba(200, 245, 59, 0.16);
+      background: rgba(184, 208, 222, 0.24);
     }
 
     /* 4-Column Architectural Metrics Strip inside Hero Left */
@@ -654,7 +662,7 @@
       width: 44px;
       height: 44px;
       border-radius: 10px;
-      background: #0c0b09;
+      background: #101820;
       border: 1px solid var(--line-strong);
       display: grid;
       place-items: center;
@@ -725,7 +733,7 @@
       width: 48px;
       height: 48px;
       border-radius: 12px;
-      background: #0c0b09;
+      background: #101820;
       border: 1px solid var(--signal-vermilion);
       display: grid;
       place-items: center;
@@ -786,7 +794,7 @@
     .bot-stage-terminal {
       padding: 14px;
       border-radius: 8px;
-      background: #080706;
+      background: #0b1117;
       border: 1px solid var(--line-subtle);
       font-family: var(--font-mono);
       font-size: 12px;
@@ -972,7 +980,10 @@
     .room-obsidian {
       padding: clamp(72px, 9vw, 128px) 0;
       border-bottom: 1px solid var(--line-subtle);
-      background: var(--bg-obsidian);
+      background:
+        radial-gradient(ellipse 55% 60% at 12% 30%, rgba(115, 148, 172, 0.16) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 55% at 88% 75%, rgba(53, 75, 96, 0.35) 0%, transparent 70%),
+        var(--bg-obsidian);
     }
 
     .bot-roster-grid {
@@ -1012,12 +1023,12 @@
       width: 64px;
       height: 64px;
       border-radius: 14px;
-      background: #080706;
+      background: #101820;
       border: 1px solid var(--line-strong);
       display: grid;
       place-items: center;
       flex: 0 0 auto;
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 12px 28px rgba(16, 24, 32, 0.55);
     }
 
     .roster-bot-emblem svg {
@@ -1125,7 +1136,7 @@
     .synth-readout {
       padding: clamp(24px, 3.5vw, 38px);
       border-radius: 14px;
-      background: #080706;
+      background: #101820;
       border: 1px solid var(--line-vermilion);
       position: relative;
     }
@@ -1181,14 +1192,14 @@
     .tier-module:where([data-featured="true"]) {
       background: var(--room-paper);
       color: var(--room-paper-ink);
-      border: 2px solid var(--signal-vermilion);
-      box-shadow: 0 28px 70px rgba(255, 72, 32, 0.18);
+      border: 2px solid #B8D0DE;
+      box-shadow: 0 28px 70px rgba(115, 148, 172, 0.25);
     }
 
     .tier-badge {
       display: inline-block;
       padding: 4px 10px;
-      border-radius: 4px;
+      border-radius: 999px;
       font-family: var(--font-mono);
       font-size: 10.5px;
       font-weight: 600;
@@ -1199,8 +1210,8 @@
     }
 
     .tier-module:where([data-featured="true"]) .tier-badge {
-      background: var(--signal-vermilion);
-      color: #0c0b09;
+      background: #354B60;
+      color: #F0F5F7;
     }
 
     .tier-title {
@@ -1397,7 +1408,7 @@
 
     .site-footer {
       padding: 48px 0 64px;
-      background: #080706;
+      background: #0b1117;
       border-top: 1px solid var(--line-subtle);
       font-size: 13.5px;
       color: var(--text-ash);
@@ -1549,50 +1560,50 @@
          ======================================================================== -->
     <svg class="paint-defs" aria-hidden="true"><title>Biblioteca Vetorial AsixBot</title>
       <defs>
-        <!-- UNIT-01: NEXUS (Orbital Radar & Acoustic Transceiver Bot — Volt #c8f53b) -->
+        <!-- UNIT-01: NEXUS (Orbital Radar & Acoustic Transceiver Bot — #B8D0DE & #7394AC) -->
         <symbol id="bot-nexus" viewBox="0 0 48 48">
-          <rect width="48" height="48" rx="10" fill="#0c0b09"/>
-          <circle cx="24" cy="24" r="17" fill="none" stroke="#c8f53b" stroke-width="1.5" stroke-dasharray="4 3" stroke-opacity="0.55"/>
-          <polygon points="24,9 37,16.5 37,31.5 24,39 11,31.5 11,16.5" fill="#181c10" stroke="#c8f53b" stroke-width="2" stroke-linejoin="round"/>
-          <line x1="24" y1="3" x2="24" y2="9" stroke="#c8f53b" stroke-width="2" stroke-linecap="round"/>
-          <line x1="24" y1="39" x2="24" y2="45" stroke="#c8f53b" stroke-width="2" stroke-linecap="round"/>
-          <rect x="15" y="19" width="18" height="10" rx="3" fill="#090b06" stroke="#c8f53b" stroke-width="1.2"/>
-          <circle cx="20" cy="24" r="2.3" fill="#c8f53b"/>
-          <circle cx="28" cy="24" r="2.3" fill="#c8f53b"/>
-          <path d="M18 33h12" stroke="#c8f53b" stroke-width="1.8" stroke-linecap="round"/>
+          <rect width="48" height="48" rx="10" fill="#101820"/>
+          <circle cx="24" cy="24" r="17" fill="none" stroke="#B8D0DE" stroke-width="1.5" stroke-dasharray="4 3" stroke-opacity="0.6"/>
+          <polygon points="24,9 37,16.5 37,31.5 24,39 11,31.5 11,16.5" fill="#354B60" stroke="#B8D0DE" stroke-width="2" stroke-linejoin="round"/>
+          <line x1="24" y1="3" x2="24" y2="9" stroke="#B8D0DE" stroke-width="2" stroke-linecap="round"/>
+          <line x1="24" y1="39" x2="24" y2="45" stroke="#B8D0DE" stroke-width="2" stroke-linecap="round"/>
+          <rect x="15" y="19" width="18" height="10" rx="3" fill="#101820" stroke="#7394AC" stroke-width="1.2"/>
+          <circle cx="20" cy="24" r="2.3" fill="#F0F5F7"/>
+          <circle cx="28" cy="24" r="2.3" fill="#F0F5F7"/>
+          <path d="M18 33h12" stroke="#B8D0DE" stroke-width="1.8" stroke-linecap="round"/>
         </symbol>
 
-        <!-- UNIT-02: VORTEX (Isometric Prism Optical Scanner Bot — Vermilion #ff4820) -->
+        <!-- UNIT-02: VORTEX (Isometric Prism Optical Scanner Bot — #7394AC & #F0F5F7) -->
         <symbol id="bot-vortex" viewBox="0 0 48 48">
-          <rect width="48" height="48" rx="10" fill="#0c0b09"/>
-          <rect x="8" y="8" width="32" height="32" rx="7" fill="#1f120e" stroke="#ff4820" stroke-width="2"/>
-          <path d="M8 16h32M8 32h32M16 8v32M32 8v32" stroke="#ff4820" stroke-width="0.9" stroke-opacity="0.3"/>
-          <circle cx="24" cy="24" r="9" fill="#0c0b09" stroke="#ff4820" stroke-width="2"/>
-          <polygon points="24,18 29.2,24 24,30 18.8,24" fill="#ff4820"/>
-          <circle cx="24" cy="24" r="2" fill="#f6f3ec"/>
-          <circle cx="12.5" cy="12.5" r="1.5" fill="#ff4820"/>
-          <circle cx="35.5" cy="12.5" r="1.5" fill="#ff4820"/>
+          <rect width="48" height="48" rx="10" fill="#101820"/>
+          <rect x="8" y="8" width="32" height="32" rx="7" fill="#354B60" stroke="#7394AC" stroke-width="2"/>
+          <path d="M8 16h32M8 32h32M16 8v32M32 8v32" stroke="#B8D0DE" stroke-width="0.9" stroke-opacity="0.35"/>
+          <circle cx="24" cy="24" r="9" fill="#101820" stroke="#B8D0DE" stroke-width="2"/>
+          <polygon points="24,18 29.2,24 24,30 18.8,24" fill="#7394AC"/>
+          <circle cx="24" cy="24" r="2.2" fill="#F0F5F7"/>
+          <circle cx="12.5" cy="12.5" r="1.5" fill="#B8D0DE"/>
+          <circle cx="35.5" cy="12.5" r="1.5" fill="#B8D0DE"/>
         </symbol>
 
-        <!-- UNIT-03: AEGIS (Octahedral Cryptographic Sentinel Bot — Amber #f59e0b) -->
+        <!-- UNIT-03: AEGIS (Octahedral Cryptographic Sentinel Bot — #354B60 & #B8D0DE) -->
         <symbol id="bot-aegis" viewBox="0 0 48 48">
-          <rect width="48" height="48" rx="10" fill="#0c0b09"/>
-          <path d="M24 6 40 13v11c0 10.2-6.8 16.4-16 18.5C14.8 40.4 8 34.2 8 24V13l16-7Z" fill="#211809" stroke="#f59e0b" stroke-width="2" stroke-linejoin="round"/>
-          <polygon points="24,12 34,19 30,31 18,31 14,19" fill="#0c0b09" stroke="#f59e0b" stroke-width="1.4"/>
-          <path d="M18 21h12" stroke="#f59e0b" stroke-width="2.6" stroke-linecap="round"/>
-          <circle cx="21" cy="21" r="1.6" fill="#ffffff"/>
-          <circle cx="27" cy="21" r="1.6" fill="#ffffff"/>
-          <rect x="22" y="25" width="4" height="4" rx="1" fill="#f59e0b"/>
+          <rect width="48" height="48" rx="10" fill="#101820"/>
+          <path d="M24 6 40 13v11c0 10.2-6.8 16.4-16 18.5C14.8 40.4 8 34.2 8 24V13l16-7Z" fill="#354B60" stroke="#B8D0DE" stroke-width="2" stroke-linejoin="round"/>
+          <polygon points="24,12 34,19 30,31 18,31 14,19" fill="#101820" stroke="#7394AC" stroke-width="1.4"/>
+          <path d="M18 21h12" stroke="#7394AC" stroke-width="2.6" stroke-linecap="round"/>
+          <circle cx="21" cy="21" r="1.6" fill="#F0F5F7"/>
+          <circle cx="27" cy="21" r="1.6" fill="#F0F5F7"/>
+          <rect x="22" y="25" width="4" height="4" rx="1" fill="#B8D0DE"/>
         </symbol>
 
-        <!-- UNIT-04: KRONOS (Twin-Rotor Neural Ledger Matrix Bot — Cyan #22d3ee) -->
+        <!-- UNIT-04: KRONOS (Twin-Rotor Neural Ledger Matrix Bot — #7394AC & #B8D0DE) -->
         <symbol id="bot-kronos" viewBox="0 0 48 48">
-          <rect width="48" height="48" rx="10" fill="#0c0b09"/>
-          <polygon points="16,7 32,7 41,16 41,32 32,41 16,41 7,32 7,16" fill="#0e1e22" stroke="#22d3ee" stroke-width="2" stroke-linejoin="round"/>
-          <rect x="13" y="15" width="22" height="18" rx="4" fill="#071012" stroke="#22d3ee" stroke-width="1.3"/>
-          <circle cx="18.5" cy="21" r="2.2" fill="#22d3ee"/>
-          <circle cx="29.5" cy="21" r="2.2" fill="#22d3ee"/>
-          <path d="M17 28h4l2-3 2 5 2-2h4" fill="none" stroke="#22d3ee" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect width="48" height="48" rx="10" fill="#101820"/>
+          <polygon points="16,7 32,7 41,16 41,32 32,41 16,41 7,32 7,16" fill="#354B60" stroke="#7394AC" stroke-width="2" stroke-linejoin="round"/>
+          <rect x="13" y="15" width="22" height="18" rx="4" fill="#101820" stroke="#B8D0DE" stroke-width="1.3"/>
+          <circle cx="18.5" cy="21" r="2.2" fill="#F0F5F7"/>
+          <circle cx="29.5" cy="21" r="2.2" fill="#F0F5F7"/>
+          <path d="M17 28h4l2-3 2 5 2-2h4" fill="none" stroke="#B8D0DE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
         </symbol>
 
         <!-- Provider & OS Icons -->
@@ -1635,14 +1646,14 @@
       <div class="container site-header-inner">
         <a href="#top" class="brand-lockup" aria-label="AsixBot Início">
           <svg class="asix-core-mark" viewBox="0 0 240 240" aria-hidden="true"><title>Núcleo Hexagonal AsixBot</title>
-            <rect width="240" height="240" rx="38" fill="#13110e" stroke="#ff4820" stroke-width="6"/>
-            <polygon points="120,22 204,71 204,169 120,218 36,169 36,71" fill="#1b1713" stroke="#ff4820" stroke-width="7" stroke-linejoin="round"/>
-            <path d="M120 22v36M120 182v36M36 71l32 18M172 151l32 18M204 71l-32 18M68 151l-32 18" stroke="#ff4820" stroke-width="5" stroke-linecap="round"/>
+            <rect width="240" height="240" rx="38" fill="#101820" stroke="#7394AC" stroke-width="6"/>
+            <polygon points="120,22 204,71 204,169 120,218 36,169 36,71" fill="#354B60" stroke="#B8D0DE" stroke-width="7" stroke-linejoin="round"/>
+            <path d="M120 22v36M120 182v36M36 71l32 18M172 151l32 18M204 71l-32 18M68 151l-32 18" stroke="#7394AC" stroke-width="5" stroke-linecap="round"/>
             <g class="asix-core-pupil">
-              <polygon points="120,62 170,91 170,149 120,178 70,149 70,91" fill="#0c0b09" stroke="#f6f3ec" stroke-width="4" stroke-opacity="0.4"/>
-              <circle cx="120" cy="120" r="32" fill="#ff4820"/>
-              <circle cx="120" cy="120" r="13" fill="#0c0b09"/>
-              <circle cx="128" cy="112" r="5.5" fill="#c8f53b"/>
+              <polygon points="120,62 170,91 170,149 120,178 70,149 70,91" fill="#101820" stroke="#B8D0DE" stroke-width="4" stroke-opacity="0.55"/>
+              <circle cx="120" cy="120" r="32" fill="#7394AC"/>
+              <circle cx="120" cy="120" r="13" fill="#101820"/>
+              <circle cx="128" cy="112" r="5.5" fill="#F0F5F7"/>
             </g>
           </svg>
           <div class="brand-wordmark">
@@ -1939,7 +1950,7 @@
                 <span class="roster-bot-emblem">
                   <svg viewBox="0 0 48 48"><title>Esquemática NEXUS</title><use href="#bot-nexus"/></svg>
                 </span>
-                <span class="roster-tag" style="color: var(--phosphor-volt); border-color: rgba(200, 245, 59, 0.3)">UNIT-01 // COMMS &amp; SDR</span>
+                <span class="roster-tag" style="color: #B8D0DE; border-color: rgba(184, 208, 222, 0.35)">UNIT-01 // COMMS &amp; SDR</span>
               </div>
               <div>
                 <h3>NEXUS — Transceptor de Atendimento &amp; Triagem</h3>
@@ -1958,7 +1969,7 @@
                 <span class="roster-bot-emblem">
                   <svg viewBox="0 0 48 48"><title>Esquemática VORTEX</title><use href="#bot-vortex"/></svg>
                 </span>
-                <span class="roster-tag" style="color: var(--signal-vermilion); border-color: rgba(255, 72, 32, 0.35)">UNIT-02 // CHROMIUM CDP</span>
+                <span class="roster-tag" style="color: #F0F5F7; border-color: rgba(115, 148, 172, 0.45)">UNIT-02 // CHROMIUM CDP</span>
               </div>
               <div>
                 <h3>VORTEX — Operador Óptico de Sistemas Legados</h3>
@@ -1977,7 +1988,7 @@
                 <span class="roster-bot-emblem">
                   <svg viewBox="0 0 48 48"><title>Esquemática AEGIS</title><use href="#bot-aegis"/></svg>
                 </span>
-                <span class="roster-tag" style="color: var(--amber-core); border-color: rgba(245, 158, 11, 0.35)">UNIT-03 // DPO &amp; VAULT</span>
+                <span class="roster-tag" style="color: #B8D0DE; border-color: rgba(184, 208, 222, 0.35)">UNIT-03 // DPO &amp; VAULT</span>
               </div>
               <div>
                 <h3>AEGIS — Sentinela Criptográfica &amp; LGPD</h3>
@@ -1996,7 +2007,7 @@
                 <span class="roster-bot-emblem">
                   <svg viewBox="0 0 48 48"><title>Esquemática KRONOS</title><use href="#bot-kronos"/></svg>
                 </span>
-                <span class="roster-tag" style="color: var(--cryo-cyan); border-color: rgba(34, 211, 238, 0.35)">UNIT-04 // DAG &amp; LEDGER</span>
+                <span class="roster-tag" style="color: #F0F5F7; border-color: rgba(115, 148, 172, 0.45)">UNIT-04 // DAG &amp; LEDGER</span>
               </div>
               <div>
                 <h3>KRONOS — Orquestrador Fiscal &amp; Engenharia</h3>
@@ -2246,10 +2257,10 @@
       <div class="container site-footer-inner">
         <div style="display: flex; align-items: center; gap: 12px">
           <svg style="width: 24px; height: 24px" viewBox="0 0 240 240" aria-hidden="true"><title>Emblema AsixBot</title>
-            <rect width="240" height="240" rx="38" fill="#13110e" stroke="#ff4820" stroke-width="8"/>
-            <polygon points="120,28 198,74 198,166 120,212 42,166 42,74" fill="#1b1713" stroke="#ff4820" stroke-width="8" stroke-linejoin="round"/>
-            <circle cx="120" cy="120" r="32" fill="#ff4820"/>
-            <circle cx="128" cy="112" r="7" fill="#c8f53b"/>
+            <rect width="240" height="240" rx="38" fill="#101820" stroke="#7394AC" stroke-width="8"/>
+            <polygon points="120,28 198,74 198,166 120,212 42,166 42,74" fill="#354B60" stroke="#B8D0DE" stroke-width="8" stroke-linejoin="round"/>
+            <circle cx="120" cy="120" r="32" fill="#7394AC"/>
+            <circle cx="128" cy="112" r="7" fill="#F0F5F7"/>
           </svg>
           <span>© 2026 ASIXBOT // INFRAESTRUTURA AUTÔNOMA DE AGENTES. TODOS OS DIREITOS RESERVADOS.</span>
         </div>
@@ -2268,7 +2279,7 @@
     const UNIT_SCENARIOS = {
       nexus: {
         icon: "#bot-nexus",
-        border: "#c8f53b",
+        border: "#B8D0DE",
         title: "UNIT-01 // NEXUS · Triagem Comercial",
         engine: "Motor: Claude 3.7 Sonnet + WhatsApp Ingress",
         latency: "410ms",
@@ -2283,7 +2294,7 @@
       },
       vortex: {
         icon: "#bot-vortex",
-        border: "#ff4820",
+        border: "#7394AC",
         title: "UNIT-02 // VORTEX · Extrator Óptico CDP",
         engine: "Motor: OpenAI Codex + Chromium Headless :99",
         latency: "680ms",
@@ -2298,7 +2309,7 @@
       },
       aegis: {
         icon: "#bot-aegis",
-        border: "#f59e0b",
+        border: "#B8D0DE",
         title: "UNIT-03 // AEGIS · Sentinela LGPD & Vault",
         engine: "Motor: Ollama Local (Llama 3.3 70B) · Air-Gapped",
         latency: "190ms",
@@ -2313,7 +2324,7 @@
       },
       kronos: {
         icon: "#bot-kronos",
-        border: "#22d3ee",
+        border: "#7394AC",
         title: "UNIT-04 // KRONOS · Auditor Fiscal & DAG",
         engine: "Motor: Gemini 2.5 Pro + SQLite WAL + RTK",
         latency: "520ms",
