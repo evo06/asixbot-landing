@@ -5,42 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="color-scheme" content="dark light">
   <title>AsixBot — A Plataforma de Agentes de IA Autônomos para Empresas</title>
-  <meta name="description" content="Coloque agentes de IA autônomos para trabalhar na sua empresa 24/7. Integração nativa com WhatsApp, Slack, Telegram, automação de navegador e execução de tarefas no computador com privacidade total.">
+  <meta name="description" content="Automatize operações críticas com agentes de IA 24/7. Integração nativa com WhatsApp, Slack, navegação web autônoma e execução de tarefas no seu servidor com privacidade LGPD absoluta.">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%236366f1'/%3E%3Cpath d='M30 45 L50 25 L70 45 M50 25 L50 75' stroke='white' stroke-width='9' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
       color-scheme: dark;
-      --bg: #090a0f;
-      --surface: #10121a;
-      --surface-card: #151824;
-      --surface-border: #232738;
-      --surface-hover: #1c2030;
-      
+      --bg: #07090e;
+      --bg-alt: #0c0e17;
+      --surface: #111420;
+      --surface-card: #151928;
+      --surface-border: rgba(255, 255, 255, 0.08);
+      --surface-hover: #1c2237;
+
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --text-sub: #64748b;
 
       --primary: #6366f1;
-      --primary-glow: rgba(99, 102, 241, 0.25);
+      --primary-glow: rgba(99, 102, 241, 0.35);
       --primary-light: #818cf8;
       --accent: #a855f7;
-      --accent-glow: rgba(168, 85, 247, 0.25);
+      --accent-glow: rgba(168, 85, 247, 0.35);
+      --cyan: #06b6d4;
       --success: #10b981;
-      --success-glow: rgba(16, 185, 129, 0.2);
+      --success-glow: rgba(16, 185, 129, 0.25);
+      --warning: #f59e0b;
 
-      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
       --font-mono: 'JetBrains Mono', monospace;
-      
+
       --radius-sm: 8px;
       --radius-md: 14px;
-      --radius-lg: 20px;
+      --radius-lg: 22px;
       --radius-xl: 32px;
-      --container-max: 1200px;
+      --container-max: 1220px;
     }
 
     * {
@@ -63,47 +66,50 @@
       text-decoration: none;
     }
 
-    /* Background Ambient Lights */
-    .ambient-glow {
+    /* Ambient Background FX */
+    .bg-mesh {
       position: absolute;
       top: 0;
       left: 50%;
       transform: translateX(-50%);
       width: 100vw;
-      height: 850px;
-      background: radial-gradient(circle at 50% 20%, rgba(99, 102, 241, 0.15) 0%, rgba(168, 85, 247, 0.08) 35%, transparent 70%);
+      height: 980px;
+      background: 
+        radial-gradient(circle at 50% 10%, rgba(99, 102, 241, 0.18) 0%, transparent 55%),
+        radial-gradient(circle at 80% 25%, rgba(168, 85, 247, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 20% 30%, rgba(6, 182, 212, 0.1) 0%, transparent 45%);
       z-index: -1;
       pointer-events: none;
     }
 
-    .ambient-grid {
+    .bg-grid {
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
-      height: 900px;
+      height: 950px;
       background-image: 
-        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 48px 48px;
-      mask-image: radial-gradient(ellipse at 50% 30%, black 20%, transparent 75%);
-      -webkit-mask-image: radial-gradient(ellipse at 50% 30%, black 20%, transparent 75%);
+        linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: radial-gradient(ellipse at 50% 25%, black 25%, transparent 75%);
+      -webkit-mask-image: radial-gradient(ellipse at 50% 25%, black 25%, transparent 75%);
       z-index: -1;
       pointer-events: none;
     }
 
-    /* Header & Navigation */
+    /* Navigation */
     header {
       position: sticky;
       top: 0;
       z-index: 100;
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-      background: rgba(9, 10, 15, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--surface-border);
+      background: rgba(7, 9, 14, 0.82);
     }
 
-    .nav-container {
+    .nav-wrap {
       max-width: var(--container-max);
       margin: 0 auto;
       padding: 16px 24px;
@@ -112,35 +118,27 @@
       justify-content: space-between;
     }
 
-    .brand-logo {
+    .brand {
       display: flex;
       align-items: center;
       gap: 12px;
       font-weight: 800;
-      font-size: 1.35rem;
+      font-size: 1.4rem;
       letter-spacing: -0.02em;
     }
 
     .brand-icon {
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
       background: linear-gradient(135deg, var(--primary), var(--accent));
       border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 14px var(--primary-glow);
+      box-shadow: 0 4px 18px var(--primary-glow);
     }
 
-    .brand-icon svg {
-      width: 20px;
-      height: 20px;
-      fill: none;
-      stroke: #fff;
-      stroke-width: 2.5;
-    }
-
-    .nav-links {
+    .nav-menu {
       display: flex;
       align-items: center;
       gap: 32px;
@@ -149,27 +147,31 @@
       color: var(--text-muted);
     }
 
-    .nav-links a:hover {
-      color: var(--text-main);
+    .nav-menu a {
       transition: color 0.2s;
+    }
+
+    .nav-menu a:hover {
+      color: var(--text-main);
     }
 
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
     }
 
+    /* Buttons */
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 10px 20px;
+      padding: 10px 22px;
       font-size: 0.95rem;
       font-weight: 600;
       border-radius: var(--radius-md);
-      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
       cursor: pointer;
       border: 1px solid transparent;
       text-decoration: none;
@@ -178,45 +180,33 @@
     .btn-ghost {
       color: var(--text-muted);
       border-color: rgba(255, 255, 255, 0.1);
-      background: rgba(255, 255, 255, 0.03);
+      background: rgba(255, 255, 255, 0.04);
     }
 
     .btn-ghost:hover {
-      color: var(--text-main);
-      background: rgba(255, 255, 255, 0.07);
+      color: #fff;
+      background: rgba(255, 255, 255, 0.08);
       border-color: rgba(255, 255, 255, 0.2);
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--primary), #4f46e5);
+      background: linear-gradient(135deg, var(--primary), #4338ca);
       color: #fff;
       box-shadow: 0 4px 20px var(--primary-glow);
     }
 
     .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 24px rgba(99, 102, 241, 0.45);
-      filter: brightness(1.08);
-    }
-
-    .btn-accent {
-      background: linear-gradient(135deg, var(--accent), #9333ea);
-      color: #fff;
-      box-shadow: 0 4px 20px var(--accent-glow);
-    }
-
-    .btn-accent:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 6px 24px rgba(168, 85, 247, 0.45);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(99, 102, 241, 0.45);
+      filter: brightness(1.1);
     }
 
     .btn-lg {
-      padding: 14px 28px;
+      padding: 14px 30px;
       font-size: 1.05rem;
       border-radius: var(--radius-md);
     }
 
-    /* Container */
     .container {
       max-width: var(--container-max);
       margin: 0 auto;
@@ -225,7 +215,7 @@
 
     /* Hero Section */
     .hero {
-      padding: 90px 0 60px;
+      padding: 96px 0 64px;
       text-align: center;
       position: relative;
     }
@@ -233,422 +223,482 @@
     .badge-pill {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 6px 16px;
+      gap: 10px;
+      padding: 7px 18px;
       border-radius: 999px;
       background: rgba(99, 102, 241, 0.1);
-      border: 1px solid rgba(99, 102, 241, 0.3);
+      border: 1px solid rgba(99, 102, 241, 0.32);
       color: var(--primary-light);
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       font-weight: 600;
       margin-bottom: 28px;
+      animation: pulse-glow 3s infinite ease-in-out;
     }
 
-    .badge-pill span.dot {
-      width: 7px;
-      height: 7px;
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 15px rgba(99, 102, 241, 0.15); }
+      50% { box-shadow: 0 0 25px rgba(99, 102, 241, 0.3); }
+    }
+
+    .badge-pill .dot {
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: var(--success);
       box-shadow: 0 0 10px var(--success);
     }
 
     .hero h1 {
-      font-size: clamp(2.5rem, 5.5vw, 4.3rem);
+      font-size: clamp(2.6rem, 5.8vw, 4.4rem);
       font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.12;
-      margin-bottom: 24px;
-      max-width: 950px;
+      letter-spacing: -0.035em;
+      line-height: 1.1;
+      margin-bottom: 26px;
+      max-width: 980px;
       margin-left: auto;
       margin-right: auto;
     }
 
     .text-gradient {
-      background: linear-gradient(135deg, #ffffff 40%, #a5b4fc 80%, #c084fc 100%);
+      background: linear-gradient(135deg, #ffffff 30%, #a5b4fc 75%, #c084fc 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    .hero p {
-      font-size: clamp(1.1rem, 2vw, 1.3rem);
+    .hero p.lead {
+      font-size: clamp(1.15rem, 2.1vw, 1.35rem);
       color: var(--text-muted);
-      max-width: 760px;
-      margin: 0 auto 36px;
+      max-width: 790px;
+      margin: 0 auto 38px;
       font-weight: 400;
     }
 
-    .hero-actions {
+    .hero-buttons {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: center;
       gap: 16px;
-      margin-bottom: 50px;
+      margin-bottom: 40px;
     }
 
-    .hero-note {
+    /* Terminal Quick Install */
+    .quick-install {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #06080e;
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 10px 18px;
+      font-family: var(--font-mono);
       font-size: 0.88rem;
-      color: var(--text-sub);
+      color: #38bdf8;
+      cursor: pointer;
+      user-select: all;
+      margin-bottom: 50px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      transition: border-color 0.2s;
+    }
+
+    .quick-install:hover {
+      border-color: var(--primary);
+    }
+
+    .copy-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: none;
+      color: var(--text-muted);
+      padding: 4px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.78rem;
+      font-family: var(--font-sans);
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .copy-btn:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    /* Tech Stack Badges */
+    .tech-badges {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: center;
-      gap: 20px;
+      gap: 10px;
+      margin-bottom: 60px;
     }
 
-    .hero-note span {
+    .tech-pill {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      font-weight: 500;
     }
 
-    /* Mockup Preview */
-    .app-preview-wrap {
-      margin-top: 40px;
-      position: relative;
-    }
-
-    .app-preview-window {
+    /* Interactive Live Sandbox (Awwwards Style) */
+    .sandbox-wrap {
       background: var(--surface);
       border: 1px solid var(--surface-border);
-      border-radius: var(--radius-lg);
-      box-shadow: 
-        0 20px 50px -10px rgba(0, 0, 0, 0.7),
-        0 0 0 1px rgba(255, 255, 255, 0.05),
-        0 0 80px rgba(99, 102, 241, 0.12);
+      border-radius: var(--radius-xl);
       overflow: hidden;
+      box-shadow: 
+        0 24px 60px -12px rgba(0, 0, 0, 0.75),
+        0 0 0 1px rgba(255, 255, 255, 0.06),
+        0 0 90px rgba(99, 102, 241, 0.15);
       text-align: left;
+      margin-top: 20px;
     }
 
-    .window-header {
-      background: #0d0f17;
-      padding: 14px 20px;
+    .sandbox-header {
+      background: #0a0c14;
+      padding: 16px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid var(--surface-border);
     }
 
-    .window-dots {
+    .sandbox-dots {
       display: flex;
       gap: 8px;
     }
 
-    .window-dots span {
-      width: 11px;
-      height: 11px;
+    .sandbox-dots span {
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
-      background: #272a38;
     }
-    .window-dots span:nth-child(1) { background: #ef4444; }
-    .window-dots span:nth-child(2) { background: #f59e0b; }
-    .window-dots span:nth-child(3) { background: #10b981; }
+    .sandbox-dots span:nth-child(1) { background: #ef4444; }
+    .sandbox-dots span:nth-child(2) { background: #f59e0b; }
+    .sandbox-dots span:nth-child(3) { background: #10b981; }
 
-    .window-title {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      font-family: var(--font-mono);
+    .sandbox-tabs {
       display: flex;
-      align-items: center;
       gap: 8px;
+      background: rgba(255, 255, 255, 0.04);
+      padding: 4px;
+      border-radius: var(--radius-sm);
     }
 
-    .window-content {
+    .sandbox-tab-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 7px 16px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      transition: all 0.2s;
+    }
+
+    .sandbox-tab-btn.active {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 2px 10px var(--primary-glow);
+    }
+
+    .sandbox-body {
       display: grid;
-      grid-template-columns: 240px 1fr 300px;
-      min-height: 480px;
-      background: var(--surface);
+      grid-template-columns: 280px 1fr;
+      min-height: 520px;
     }
 
-    /* Sidebar mockup */
-    .mock-sidebar {
-      background: #0d0f17;
+    .sandbox-sidebar {
+      background: #090b12;
       border-right: 1px solid var(--surface-border);
-      padding: 16px;
+      padding: 20px;
     }
 
-    .mock-agent-item {
+    .agent-card-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .agent-item {
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 10px 12px;
+      gap: 12px;
+      padding: 12px;
       border-radius: var(--radius-sm);
-      margin-bottom: 6px;
+      border: 1px solid transparent;
       cursor: pointer;
-      font-size: 0.9rem;
-      font-weight: 600;
+      transition: all 0.2s;
     }
 
-    .mock-agent-item.active {
-      background: rgba(99, 102, 241, 0.15);
-      border: 1px solid rgba(99, 102, 241, 0.3);
+    .agent-item:hover {
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .agent-item.selected {
+      background: rgba(99, 102, 241, 0.12);
+      border-color: rgba(99, 102, 241, 0.3);
       color: #fff;
     }
 
-    .mock-avatar {
-      width: 28px;
-      height: 28px;
+    .agent-avatar {
+      width: 34px;
+      height: 34px;
       border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.8rem;
+      font-size: 1.1rem;
     }
 
-    /* Chat center mockup */
-    .mock-chat {
-      padding: 24px;
+    .sandbox-main {
+      padding: 30px;
+      background: var(--surface);
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 24px;
       overflow-y: auto;
     }
 
-    .mock-msg {
-      display: flex;
-      gap: 12px;
+    .chat-bubble {
+      background: var(--surface-card);
+      border: 1px solid var(--surface-border);
+      padding: 16px 20px;
+      border-radius: var(--radius-md);
+      font-size: 0.95rem;
       max-width: 90%;
     }
 
-    .mock-bubble {
-      background: var(--surface-card);
-      border: 1px solid var(--surface-border);
-      padding: 14px 18px;
-      border-radius: var(--radius-md);
-      font-size: 0.92rem;
+    .chat-bubble.agent-response {
+      border-color: rgba(99, 102, 241, 0.35);
+      background: linear-gradient(180deg, #161b2e 0%, #121525 100%);
     }
 
-    .mock-bubble pre {
-      background: #090a0f;
-      padding: 10px 14px;
-      border-radius: 6px;
-      font-family: var(--font-mono);
-      font-size: 0.82rem;
-      color: #38bdf8;
-      margin-top: 10px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    /* Right panel mockup */
-    .mock-inspector {
-      background: #0d0f17;
-      border-left: 1px solid var(--surface-border);
-      padding: 18px;
-    }
-
-    .mock-card {
-      background: var(--surface-card);
-      border: 1px solid var(--surface-border);
+    .code-box {
+      background: #060810;
+      border: 1px solid rgba(255, 255, 255, 0.08);
       border-radius: var(--radius-sm);
-      padding: 14px;
-      margin-bottom: 14px;
+      padding: 14px 18px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      color: #38bdf8;
+      margin-top: 12px;
+      line-height: 1.7;
     }
 
-    .mock-card h4 {
-      font-size: 0.82rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-sub);
-      margin-bottom: 8px;
-    }
-
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 4px 10px;
-      border-radius: 99px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      background: rgba(16, 185, 129, 0.12);
-      color: var(--success);
-    }
-
-    /* Features Section */
+    /* Bento Grid Features */
     .section {
-      padding: 110px 0;
+      padding: 120px 0;
     }
 
-    .section-header {
+    .section-head {
       text-align: center;
-      max-width: 720px;
-      margin: 0 auto 60px;
+      max-width: 740px;
+      margin: 0 auto 64px;
     }
 
     .section-tag {
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
       color: var(--primary-light);
       margin-bottom: 12px;
       display: block;
     }
 
     .section-title {
-      font-size: clamp(2rem, 3.8vw, 3rem);
+      font-size: clamp(2.2rem, 4.2vw, 3.2rem);
       font-weight: 800;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-      margin-bottom: 18px;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      margin-bottom: 20px;
     }
 
-    .section-desc {
-      color: var(--text-muted);
-      font-size: 1.1rem;
-    }
-
-    .features-grid {
+    .bento-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 28px;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 24px;
     }
 
-    .feature-card {
+    .bento-card {
       background: var(--surface-card);
       border: 1px solid var(--surface-border);
       border-radius: var(--radius-lg);
-      padding: 36px 32px;
-      transition: all 0.3s ease;
+      padding: 40px;
       position: relative;
       overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
-    .feature-card:hover {
-      border-color: rgba(99, 102, 241, 0.4);
-      transform: translateY(-3px);
-      box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5);
+    .bento-card:hover {
+      border-color: rgba(99, 102, 241, 0.45);
+      transform: translateY(-4px);
+      box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.6);
     }
 
-    .feature-icon {
+    .bento-col-8 { grid-column: span 8; }
+    .bento-col-4 { grid-column: span 4; }
+    .bento-col-6 { grid-column: span 6; }
+    .bento-col-12 { grid-column: span 12; }
+
+    .bento-icon {
       width: 52px;
       height: 52px;
       border-radius: 14px;
+      background: rgba(99, 102, 241, 0.12);
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      color: var(--primary-light);
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 1.5rem;
       margin-bottom: 24px;
-      font-size: 1.4rem;
-      background: rgba(99, 102, 241, 0.12);
-      color: var(--primary-light);
-      border: 1px solid rgba(99, 102, 241, 0.2);
     }
 
-    .feature-card h3 {
-      font-size: 1.35rem;
+    .bento-card h3 {
+      font-size: 1.5rem;
       font-weight: 700;
       margin-bottom: 12px;
-      letter-spacing: -0.01em;
+      letter-spacing: -0.015em;
     }
 
-    .feature-card p {
+    .bento-card p {
       color: var(--text-muted);
-      font-size: 0.98rem;
-      line-height: 1.6;
+      font-size: 1.02rem;
+      line-height: 1.65;
     }
 
-    .feature-tag {
-      display: inline-block;
-      margin-top: 18px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--primary-light);
-      background: rgba(99, 102, 241, 0.08);
-      padding: 4px 10px;
-      border-radius: 6px;
-    }
-
-    /* Comparison / Architecture Section */
-    .arch-box {
-      background: linear-gradient(180deg, #12141f 0%, #0d0e17 100%);
-      border: 1px solid var(--surface-border);
+    /* ROI Calculator (Interactive Widget) */
+    .calc-card {
+      background: linear-gradient(135deg, #131726 0%, #0d101c 100%);
+      border: 1px solid rgba(99, 102, 241, 0.35);
       border-radius: var(--radius-xl);
       padding: 48px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 48px;
       align-items: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
     }
 
-    .arch-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      margin-top: 24px;
+    .calc-slider {
+      width: 100%;
+      height: 8px;
+      border-radius: 4px;
+      background: #1e2538;
+      outline: none;
+      accent-color: var(--primary);
+      margin: 18px 0;
     }
 
-    .arch-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      font-size: 1rem;
-      color: var(--text-muted);
+    .calc-result-box {
+      background: #080a11;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-lg);
+      padding: 36px;
+      text-align: center;
     }
 
-    .check-icon {
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      background: rgba(16, 185, 129, 0.15);
+    .calc-savings {
+      font-size: 3.4rem;
+      font-weight: 800;
       color: var(--success);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.85rem;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .terminal-card {
-      background: #06070a;
-      border: 1px solid #1e2233;
-      border-radius: var(--radius-md);
-      padding: 24px;
-      font-family: var(--font-mono);
-      font-size: 0.88rem;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
-    }
-
-    .terminal-card .command {
-      color: #38bdf8;
-      margin-bottom: 12px;
-    }
-
-    .terminal-card .output {
-      color: #94a3b8;
-      line-height: 1.7;
-    }
-
-    .terminal-card .highlight {
-      color: var(--success);
+      letter-spacing: -0.03em;
+      margin: 14px 0 6px;
     }
 
     /* Pricing Section */
+    .pricing-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 48px;
+      font-weight: 600;
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 52px;
+      height: 28px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #1e2436;
+      transition: .3s;
+      border-radius: 34px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 20px;
+      width: 20px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: .3s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: var(--primary);
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(24px);
+    }
+
     .pricing-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 32px;
-      margin-top: 40px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
     }
 
     .pricing-card {
       background: var(--surface-card);
       border: 1px solid var(--surface-border);
       border-radius: var(--radius-xl);
-      padding: 44px 36px;
-      position: relative;
+      padding: 44px 34px;
       display: flex;
       flex-direction: column;
+      position: relative;
+      transition: all 0.3s;
     }
 
     .pricing-card.featured {
-      background: linear-gradient(180deg, #171b2d 0%, #111422 100%);
+      background: linear-gradient(180deg, #181d33 0%, #111424 100%);
       border-color: var(--primary);
-      box-shadow: 0 0 50px -10px var(--primary-glow);
+      box-shadow: 0 0 60px -10px var(--primary-glow);
     }
 
-    .badge-featured {
+    .featured-badge {
       position: absolute;
       top: -14px;
       left: 50%;
@@ -659,27 +709,21 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      padding: 5px 16px;
+      padding: 5px 18px;
       border-radius: 99px;
     }
 
-    .price-amount {
-      font-size: 3rem;
+    .price-value {
+      font-size: 3.2rem;
       font-weight: 800;
-      letter-spacing: -0.03em;
-      margin: 20px 0 10px;
+      letter-spacing: -0.035em;
+      margin: 22px 0 10px;
       display: flex;
       align-items: baseline;
       gap: 6px;
     }
 
-    .price-period {
-      font-size: 1rem;
-      font-weight: 500;
-      color: var(--text-sub);
-    }
-
-    .price-features {
+    .price-features-list {
       list-style: none;
       margin: 32px 0;
       display: flex;
@@ -688,17 +732,23 @@
       flex-grow: 1;
     }
 
-    .price-features li {
+    .price-features-list li {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 12px;
-      font-size: 0.95rem;
+      font-size: 0.96rem;
       color: var(--text-muted);
     }
 
-    /* FAQ Section */
-    .faq-container {
-      max-width: 800px;
+    .check-mark {
+      color: var(--success);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* FAQ */
+    .faq-wrap {
+      max-width: 820px;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
@@ -710,15 +760,16 @@
       border: 1px solid var(--surface-border);
       border-radius: var(--radius-md);
       overflow: hidden;
-      transition: border-color 0.2s;
+      transition: all 0.2s;
     }
 
     details[open] {
       border-color: rgba(99, 102, 241, 0.4);
+      background: var(--surface-hover);
     }
 
     summary {
-      padding: 22px 28px;
+      padding: 24px 28px;
       font-weight: 600;
       font-size: 1.1rem;
       cursor: pointer;
@@ -728,9 +779,7 @@
       align-items: center;
     }
 
-    summary::-webkit-details-marker {
-      display: none;
-    }
+    summary::-webkit-details-marker { display: none; }
 
     summary::after {
       content: '+';
@@ -744,154 +793,144 @@
       color: var(--primary-light);
     }
 
-    .faq-content {
+    .faq-answer {
       padding: 0 28px 24px;
       color: var(--text-muted);
-      font-size: 1rem;
+      font-size: 1.02rem;
       line-height: 1.7;
     }
 
     /* CTA Banner */
-    .cta-banner {
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(168, 85, 247, 0.12));
-      border: 1px solid rgba(99, 102, 241, 0.3);
+    .cta-box {
+      background: linear-gradient(135deg, rgba(99, 102, 241, 0.18), rgba(168, 85, 247, 0.14));
+      border: 1px solid rgba(99, 102, 241, 0.35);
       border-radius: var(--radius-xl);
-      padding: 64px 32px;
+      padding: 72px 40px;
       text-align: center;
       position: relative;
-      overflow: hidden;
-      margin-top: 40px;
     }
 
-    .cta-banner h2 {
-      font-size: clamp(2rem, 3.5vw, 2.8rem);
+    .cta-box h2 {
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
       font-weight: 800;
-      letter-spacing: -0.02em;
-      margin-bottom: 18px;
-    }
-
-    .cta-banner p {
-      color: var(--text-muted);
-      font-size: 1.15rem;
-      max-width: 620px;
-      margin: 0 auto 36px;
+      letter-spacing: -0.025em;
+      margin-bottom: 20px;
     }
 
     /* Footer */
     footer {
       border-top: 1px solid var(--surface-border);
-      padding: 60px 0 40px;
+      padding: 70px 0 40px;
       margin-top: 100px;
-      background: #07080c;
+      background: #05060a;
     }
 
-    .footer-grid {
+    .footer-cols {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
       gap: 40px;
-      margin-bottom: 50px;
+      margin-bottom: 60px;
     }
 
-    .footer-brand p {
-      color: var(--text-muted);
-      font-size: 0.92rem;
-      margin-top: 16px;
-      max-width: 320px;
-    }
-
-    .footer-col h5 {
+    .footer-cols h5 {
       font-size: 0.9rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.08em;
       margin-bottom: 18px;
       color: var(--text-main);
     }
 
-    .footer-col ul {
+    .footer-cols ul {
       list-style: none;
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
 
-    .footer-col a {
+    .footer-cols a {
       color: var(--text-muted);
-      font-size: 0.92rem;
+      font-size: 0.94rem;
       transition: color 0.2s;
     }
 
-    .footer-col a:hover {
-      color: var(--text-main);
+    .footer-cols a:hover {
+      color: #fff;
     }
 
-    .footer-bottom {
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    .footer-bar {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
       padding-top: 30px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       color: var(--text-sub);
-      font-size: 0.88rem;
+      font-size: 0.9rem;
     }
 
-    @media (max-width: 900px) {
-      .window-content {
+    @media (max-width: 1024px) {
+      .bento-col-8, .bento-col-4, .bento-col-6 {
+        grid-column: span 12;
+      }
+      .pricing-grid {
         grid-template-columns: 1fr;
       }
-      .mock-sidebar, .mock-inspector {
+      .calc-card {
+        grid-template-columns: 1fr;
+      }
+      .sandbox-body {
+        grid-template-columns: 1fr;
+      }
+      .sandbox-sidebar {
         display: none;
       }
-      .arch-box {
-        grid-template-columns: 1fr;
-      }
-      .footer-grid {
+      .footer-cols {
         grid-template-columns: 1fr 1fr;
       }
-      .nav-links {
-        display: none;
-      }
     }
 
-    @media (max-width: 600px) {
-      .footer-grid {
+    @media (max-width: 768px) {
+      .nav-menu {
+        display: none;
+      }
+      .footer-cols {
         grid-template-columns: 1fr;
-      }
-      .hero {
-        padding: 60px 0 40px;
-      }
-      .arch-box {
-        padding: 24px;
       }
     }
   </style>
 </head>
 <body>
 
-  <div class="ambient-glow"></div>
-  <div class="ambient-grid"></div>
+  <div class="bg-mesh"></div>
+  <div class="bg-grid"></div>
 
   <!-- Header -->
   <header>
-    <div class="nav-container">
-      <a href="/" class="brand-logo" aria-label="AsixBot Home">
+    <div class="nav-wrap">
+      <a href="/" class="brand" aria-label="AsixBot Início">
         <div class="brand-icon">
-          <svg viewBox="0 0 24 24" role="img" aria-label="AsixBot Logo"><title>AsixBot Logo</title><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" role="img" aria-label="AsixBot Logo">
+            <title>AsixBot Logo</title>
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
         </div>
         <span>AsixBot</span>
       </a>
 
-      <nav class="nav-links" aria-label="Navegação Principal">
+      <nav class="nav-menu" aria-label="Navegação Principal">
+        <a href="#demo">Demo Interativa</a>
         <a href="#features">Recursos</a>
-        <a href="#como-funciona">Como Funciona</a>
-        <a href="#servidor">Modo Servidor</a>
+        <a href="#calculadora">Calculadora ROI</a>
         <a href="#pricing">Planos</a>
         <a href="#faq">FAQ</a>
       </nav>
 
       <div class="nav-actions">
         <a href="https://github.com/evo06/asixbot" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" role="img" aria-label="GitHub"><title>GitHub</title><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" role="img" aria-label="GitHub">
+            <title>GitHub</title>
+            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
           GitHub
         </a>
         <a href="#download" class="btn btn-primary">Baixar v0.65.0</a>
@@ -904,396 +943,358 @@
     <section class="hero container">
       <div class="badge-pill">
         <span class="dot"></span>
-        <span>Versão 0.65.0 Disponível para Windows, macOS & Servidores Linux</span>
+        <span>AsixBot v0.65.0 · Multi-Agente Corporativo com Isolamento Local</span>
       </div>
 
       <h1>
-        Coloque <span class="text-gradient">Agentes de IA Autônomos</span> para Trabalhar na sua Empresa 24/7
+        A Força de Trabalho de <span class="text-gradient">IA Autônoma</span> que Opera Dentro da sua Empresa
       </h1>
 
-      <p>
-        O AsixBot é a plataforma completa de inteligência corporativa. Integre agentes dedicados no WhatsApp, Slack e Telegram, automatize tarefas complexas no navegador e execute rotinas no seu próprio servidor com privacidade absoluta.
+      <p class="lead">
+        Substitua integrações frágeis e tarefas manuais por agentes autônomos 24/7. Conectados diretamente ao seu WhatsApp, Slack e navegador para operar seus sistemas com total conformidade LGPD.
       </p>
 
-      <div class="hero-actions">
+      <div class="hero-buttons">
         <a href="#download" class="btn btn-primary btn-lg">
-          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" role="img" aria-label="Download"><title>Download</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-          Baixar para Windows & Mac
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" role="img" aria-label="Baixar">
+            <title>Baixar</title>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+          </svg>
+          Baixar para Windows & macOS
         </a>
-        <a href="#servidor" class="btn btn-ghost btn-lg">
-          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" role="img" aria-label="Servidor"><title>Servidor</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M12 5l7 7-7 7"/></svg>
-          Hospedar em Servidor (SaaS/On-Premises)
+        <a href="#pricing" class="btn btn-ghost btn-lg">
+          Ver Planos & Servidor Cloud
         </a>
       </div>
 
-      <div class="hero-note">
-        <span>✓ 100% dos dados na sua máquina ou servidor</span>
-        <span>✓ Sem vendor lock-in</span>
-        <span>✓ Conecte com Claude, GPT-4o, Gemini ou Ollama</span>
+      <!-- Quick Install Box -->
+      <div class="quick-install" id="quick-install-box"> this.querySelector('.copy-btn').innerText='Copiar', 2000);">
+        <span>$ curl -fsSL https://asixbot.run/install.sh | bash</span>
+        <button type="button" class="copy-btn">Copiar</button>
       </div>
 
-      <!-- App Interface Preview -->
-      <div class="app-preview-wrap">
-        <div class="app-preview-window">
-          <div class="window-header">
-            <div class="window-dots">
-              <span></span><span></span><span></span>
-            </div>
-            <div class="window-title">
-              <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24" role="img" aria-label="Janela"><title>Janela</title><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg>
-              AsixBot Enterprise Host · 3 agentes ativos em tempo real
-            </div>
-            <div class="status-badge">● Online</div>
+      <!-- Tech Stack Badges -->
+      <div class="tech-badges">
+        <div class="tech-pill">⚡ Claude 3.7 / 3.5 Sonnet</div>
+        <div class="tech-pill">🧠 OpenAI GPT-4o & o3</div>
+        <div class="tech-pill">✨ Google Gemini 2.5 Pro</div>
+        <div class="tech-pill">🦙 Modelos Locais (Ollama)</div>
+        <div class="tech-pill">💬 WhatsApp Business Nativo</div>
+        <div class="tech-pill">🔒 Criptografia SQLite AES-256</div>
+        <div class="tech-pill">🌐 Chromium CDP Headless</div>
+      </div>
+
+      <!-- Interactive Sandbox Demo -->
+      <div id="demo" class="sandbox-wrap">
+        <div class="sandbox-header">
+          <div class="sandbox-dots">
+            <span></span><span></span><span></span>
           </div>
 
-          <div class="window-content">
-            <!-- Sidebar -->
-            <div class="mock-sidebar">
-              <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-sub); margin-bottom: 12px; font-weight: 700;">Equipe de Agentes</div>
-              
-              <div class="mock-agent-item active">
-                <div class="mock-avatar" style="background: #3b82f6;">🤖</div>
-                <div>
-                  <div>Chief Executive</div>
-                  <div style="font-size: 0.75rem; color: var(--text-sub);">Orquestrador</div>
-                </div>
-              </div>
+          <div class="sandbox-tabs">
+            <button type="button" class="sandbox-tab-btn active" onclick="switchSandbox('whatsapp', this)">1. WhatsApp & Vendas</button>
+            <button type="button" class="sandbox-tab-btn" onclick="switchSandbox('financeiro', this)">2. Extrator Financeiro (CDP)</button>
+            <button type="button" class="sandbox-tab-btn" onclick="switchSandbox('seguranca', this)">3. Auditoria & LGPD</button>
+          </div>
 
-              <div class="mock-agent-item">
-                <div class="mock-avatar" style="background: #10b981;">💬</div>
-                <div>
-                  <div>Suporte WhatsApp</div>
-                  <div style="font-size: 0.75rem; color: var(--text-sub);">24/7 Ativo</div>
-                </div>
-              </div>
+          <div style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--success); font-weight: 600;">
+            ● 3 Agentes Ativos
+          </div>
+        </div>
 
-              <div class="mock-agent-item">
-                <div class="mock-avatar" style="background: #a855f7;">📊</div>
+        <div class="sandbox-body">
+          <div class="sandbox-sidebar">
+            <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-sub); font-weight: 700; letter-spacing: 0.05em;">Agentes do Workspace</div>
+            
+            <div class="agent-card-nav">
+              <button type="button" class="agent-item selected" id="nav-item-whatsapp">
+                <div class="agent-avatar" style="background: rgba(16, 185, 129, 0.2); color: #10b981;">💬</div>
                 <div>
-                  <div>Auditor Financeiro</div>
-                  <div style="font-size: 0.75rem; color: var(--text-sub);">Rotina agendada</div>
+                  <div style="font-weight: 600; font-size: 0.9rem;">Consultor Vendas</div>
+                  <div style="font-size: 0.75rem; color: var(--text-sub);">WhatsApp Ingress</div>
                 </div>
-              </div>
+              </button>
 
-              <div class="mock-agent-item">
-                <div class="mock-avatar" style="background: #f97316;">⚡</div>
+              <button type="button" class="agent-item" id="nav-item-financeiro">
+                <div class="agent-avatar" style="background: rgba(99, 102, 241, 0.2); color: #818cf8;">📊</div>
                 <div>
-                  <div>DevOps & GitHub</div>
-                  <div style="font-size: 0.75rem; color: var(--text-sub);">Webhook ligado</div>
+                  <div style="font-weight: 600; font-size: 0.9rem;">Auditor Conciliador</div>
+                  <div style="font-size: 0.75rem; color: var(--text-sub);">Browser CDP Driver</div>
                 </div>
-              </div>
+              </button>
+
+              <button type="button" class="agent-item" id="nav-item-seguranca">
+                <div class="agent-avatar" style="background: rgba(168, 85, 247, 0.2); color: #c084fc;">🛡️</div>
+                <div>
+                  <div style="font-weight: 600; font-size: 0.9rem;">Guardião LGPD</div>
+                  <div style="font-size: 0.75rem; color: var(--text-sub);">Local Vault AES</div>
+                </div>
+              </button>
             </div>
+          </div>
 
-            <!-- Chat / Work area -->
-            <div class="mock-chat">
-              <div class="mock-msg">
-                <div class="mock-avatar" style="background: #6366f1;">👤</div>
-                <div class="mock-bubble">
-                  <strong>Gestor:</strong> "Auditor Financeiro, acesse o portal do banco via navegador, baixe os extratos OFX de hoje, processe as conciliações e envie o resumo no canal do Slack da diretoria."
-                </div>
-              </div>
-
-              <div class="mock-msg" style="align-self: flex-start;">
-                <div class="mock-avatar" style="background: #a855f7;">📊</div>
-                <div class="mock-bubble" style="border-color: rgba(168, 85, 247, 0.4);">
-                  <strong>Auditor Financeiro (Agente):</strong>
-                  <p>Iniciando navegador integrado CDP. Fazendo autenticação segura via AsixBot Vault...</p>
-                  <pre>✓ Navegador conectado em headless mode
-✓ 4 extratos bancários baixados em ~/AsixBot/Shared/extratos/
-✓ Conciliação executada: 142 lançamentos validados, 0 divergências
-✓ Notificação formatada e disparada para o Slack #diretoria</pre>
-                  <div style="margin-top: 10px; font-size: 0.85rem; color: var(--success); display: flex; align-items: center; gap: 6px;">
-                    ✓ Tarefa concluída em 18.4s. Próxima execução agendada para amanhã às 08:00.
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Inspector Panel -->
-            <div class="mock-inspector">
-              <div class="mock-card">
-                <h4>Serviço Headless</h4>
-                <div style="font-weight: 700; font-size: 0.95rem;">asixbot.service</div>
-                <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">Uptime: 14 dias · 0 quedas</div>
-              </div>
-
-              <div class="mock-card">
-                <h4>Canais Conectados</h4>
-                <div style="display: flex; flex-direction: column; gap: 6px; font-size: 0.85rem; margin-top: 6px;">
-                  <div>🟢 WhatsApp Business (+55 11)</div>
-                  <div>🟢 Slack Workspace (Corp)</div>
-                  <div>🟢 Telegram Bot (@asixcorp_bot)</div>
-                </div>
-              </div>
-
-              <div class="mock-card">
-                <h4>Segurança & Vault</h4>
-                <div style="font-size: 0.82rem; color: var(--text-muted);">
-                  Criptografia local AES-256 no chaveiro do sistema. Chaves de API nunca saem da sua rede.
-                </div>
-              </div>
-            </div>
+          <div class="sandbox-main" id="sandbox-content">
+            <!-- Dynamic Content injected via JS -->
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Features Section -->
+    <!-- Bento Grid Features (Awwwards Style) -->
     <section id="features" class="section container">
-      <div class="section-header">
-        <span class="section-tag">Capacidades Corporativas</span>
-        <h2 class="section-title">Não é apenas um chat. É uma força de trabalho autônoma.</h2>
-        <p class="section-desc">
-          Enquanto assistentes tradicionais só respondem texto, os agentes do AsixBot executam tarefas reais, tomam decisões e operam ferramentas corporativas.
-        </p>
+      <div class="section-head">
+        <span class="section-tag">Engenharia de Automação</span>
+        <h2 class="section-title">Construído para rodar em produção, não para fazer brinquedos.</h2>
+        <p style="color: var(--text-muted); font-size: 1.1rem;">Cada recurso foi projetado para operações corporativas que exigem precisão, rastreabilidade e zero intervenção manual.</p>
       </div>
 
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">🌐</div>
-          <h3>Navegador & Computer Use</h3>
-          <p>
-            O agente opera navegadores Chromium reais via protocolo CDP. Ele acessa portais corporativos, preenche formulários complexos, contorna desafios e baixa arquivos sem intervenção humana.
-          </p>
-          <span class="feature-tag">Automação de Navegador</span>
+      <div class="bento-grid">
+        <!-- Card 1 -->
+        <div class="bento-card bento-col-8">
+          <div>
+            <div class="bento-icon">🌐</div>
+            <h3>Automação de Navegador Real com Protocolo CDP</h3>
+            <p>
+              O AsixBot inicia um navegador Chromium isolado via Chrome DevTools Protocol. Seus agentes navegam por páginas dinâmicas, superam proteções, preenchem formulários complexos, tiram prints e extraem tabelas de sistemas legados que não possuem APIs públicas.
+            </p>
+          </div>
+          <div class="code-box" style="margin-top: 24px;">
+            asixbot_browser.navigate("https://portal.erp-corporativo.com.br")<br>
+            ✓ Login efetuado via credencial do AsixBot Vault<br>
+            ✓ Relatório fiscal exportado em ~/AsixBot/Shared/fiscal_2026.csv (4.120 linhas processadas)
+          </div>
         </div>
 
-        <div class="feature-card">
-          <div class="feature-icon">💬</div>
-          <h3>Omnichannel: WhatsApp, Slack & Telegram</h3>
-          <p>
-            Conecte o AsixBot diretamente ao WhatsApp da sua empresa, grupos do Slack e bots do Telegram. Toda a equipe pode acionar ou ser atendida pelos agentes no canal onde já trabalha.
-          </p>
-          <span class="feature-tag">Ingress em Tempo Real</span>
+        <!-- Card 2 -->
+        <div class="bento-card bento-col-4">
+          <div>
+            <div class="bento-icon">💬</div>
+            <h3>WhatsApp & Slack Nativo</h3>
+            <p>
+              Receba clientes e membros do time no canal onde já conversam. O Ingress em tempo real direciona perguntas e tarefas para os agentes corretos com streaming de resposta.
+            </p>
+          </div>
+          <div style="margin-top: 20px; font-size: 0.85rem; color: var(--success); font-weight: 600;">
+            ● Suporta grupos, threads, anexos e botões interativos
+          </div>
         </div>
 
-        <div class="feature-card">
-          <div class="feature-icon">⏱️</div>
-          <h3>Rotinas & Agendamentos 24/7</h3>
-          <p>
-            Configure tarefas recorrentes (de 3 em 3 minutos, diárias ou por webhooks externos). Se o servidor reiniciar, o AsixBot recupera o estado e retoma as execuções pendentes.
-          </p>
-          <span class="feature-tag">Zero Quedas</span>
+        <!-- Card 3 -->
+        <div class="bento-card bento-col-4">
+          <div>
+            <div class="bento-icon">🔒</div>
+            <h3>Privacidade Absoluta (LGPD)</h3>
+            <p>
+              Seus dados nunca são armazenados na nuvem pública de terceiros. Bancos SQLite locais, históricos e senhas residem unicamente no seu hardware ou servidor dedicado.
+            </p>
+          </div>
+          <div style="margin-top: 20px; font-size: 0.85rem; color: var(--primary-light); font-weight: 600;">
+            ● Criptografia em repouso e em trânsito (P2P WebRTC)
+          </div>
         </div>
 
-        <div class="feature-card">
-          <div class="feature-icon">🔒</div>
-          <h3>Vault Seguro & Privacidade Total</h3>
-          <p>
-            Suas senhas, credenciais de bancos de dados e chaves de APIs ficam salvas no AsixBot Vault local com criptografia de ponta. Nenhum dado do cliente é usado para treinar modelos externos.
-          </p>
-          <span class="feature-tag">Conformidade LGPD/GDPR</span>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">🔌</div>
-          <h3>Ecossistema MCP (Model Context Protocol)</h3>
-          <p>
-            Adicione servidores MCP com um clique: bancos de dados PostgreSQL/MySQL, repositórios GitHub, Jira, Notion, sistemas de arquivos e ferramentas proprietárias da sua empresa.
-          </p>
-          <span class="feature-tag">Extensibilidade Ilimitada</span>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">🖥️</div>
-          <h3>Modo Servidor & Desktop Híbrido</h3>
-          <p>
-            Rode localmente no Mac/Windows da equipe ou suba um servidor dedicado Linux em nuvem (AWS, GCP, Hetzner) com controle via WebRTC P2P de baixa latência e áudio/vídeo remotos.
-          </p>
-          <span class="feature-tag">Linux / macOS / Windows</span>
+        <!-- Card 4 -->
+        <div class="bento-card bento-col-8">
+          <div>
+            <div class="bento-icon">🖥️</div>
+            <h3>Modo Servidor Headless com Display Virtual Xvfb</h3>
+            <p>
+              Rode o AsixBot em uma VPS Linux comum (Ubuntu/Debian) via <code>systemd</code> sem necessidade de monitor. O motor gerencia instâncias de display virtual para que os agentes possam navegar na internet e tirar screenshots 24 horas por dia com estabilidade total.
+            </p>
+          </div>
+          <div class="code-box" style="margin-top: 20px;">
+            $ sudo systemctl status asixbot.service<br>
+            ● asixbot.service - AsixBot Server Daemon<br>
+            &nbsp;&nbsp;Active: active (running) | Memory: 420MB | Uptime: 30 dias
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Architecture & Server Hosting Section -->
-    <section id="servidor" class="section container">
-      <div class="arch-box">
+    <!-- Interactive ROI Calculator Widget -->
+    <section id="calculadora" class="section container">
+      <div class="calc-card">
         <div>
-          <span class="section-tag">Deploy Enterprise</span>
-          <h2 class="section-title" style="font-size: 2.2rem; text-align: left;">Pronto para Rodar em Servidores Dedicados</h2>
+          <span class="section-tag">Calculadora de Economia</span>
+          <h2 class="section-title" style="font-size: 2.3rem; text-align: left; margin-bottom: 14px;">Quanto o AsixBot economiza para sua empresa?</h2>
           <p style="color: var(--text-muted); font-size: 1.05rem;">
-            O AsixBot foi construído com arquitetura de microsserviços desacoplada: você pode instalá-lo como um serviço <code>systemd</code> em qualquer servidor Ubuntu/Debian e gerenciar tudo remotamente pelo aplicativo Desktop.
+            Calcule o tempo e dinheiro poupados ao automatizar conciliações, respostas no WhatsApp e operações repetitivas com agentes digitais.
           </p>
 
-          <ul class="arch-list">
-            <li>
-              <div class="check-icon">✓</div>
-              <div><strong>Display Virtual Xvfb:</strong> Navegador e Computer Use rodam sem precisar de monitor físico plugado.</div>
-            </li>
-            <li>
-              <div class="check-icon">✓</div>
-              <div><strong>Túnel WebRTC Criptografado:</strong> Áudio, arquivos e comandos trafegam ponto-a-ponto com sinalização privada (Coturn STUN/TURN).</div>
-            </li>
-            <li>
-              <div class="check-icon">✓</div>
-              <div><strong>Multi-Agente Isolado:</strong> Vários agentes trabalhando em paralelo sem concorrência destrutiva no banco SQLite.</div>
-            </li>
-            <li>
-              <div class="check-icon">✓</div>
-              <div><strong>Atualizações Seguras In-Place:</strong> Atualize releases sem perder as sessões, memórias e históricos das conversas.</div>
-            </li>
-          </ul>
+          <div style="margin-top: 28px;">
+            <label for="hours-slider" style="font-weight: 600; display: flex; justify-content: space-between;">
+              <span>Horas gastas em tarefas manuais por semana:</span>
+              <strong id="hours-display" style="color: var(--primary-light); font-size: 1.2rem;">20 horas</strong>
+            </label>
+            <input type="range" id="hours-slider" class="calc-slider" min="5" max="100" value="20" oninput="updateROI(this.value)">
+            
+            <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-sub);">
+              <span>5h / semana</span>
+              <span>50h / semana</span>
+              <span>100h / semana</span>
+            </div>
+          </div>
         </div>
 
-        <div class="terminal-card">
-          <div class="command">$ sudo bash scripts/hosting/openbot-server-setup</div>
-          <div class="output">
-            [asixbot-setup] Instalando dependências de sistema...<br>
-            [asixbot-setup] Configurando zram e display virtual Xvfb...<br>
-            [asixbot-setup] Instalando asixbot.service no systemd...<br>
-            <span class="highlight">● asixbot.service - AsixBot Server Daemon</span><br>
-            &nbsp;&nbsp;Loaded: loaded (/etc/systemd/system/asixbot.service; enabled)<br>
-            &nbsp;&nbsp;Active: <span class="highlight">active (running)</span> since Sun 2026-11-08 23:20<br>
-            &nbsp;&nbsp;Control Socket: /run/user/1000/asixbot/control.sock<br>
-            &nbsp;&nbsp;Signal Host: wss://signal.asixbot.run/v1/signal<br>
-            &nbsp;&nbsp;Status: Servidor pareado com sucesso. 3 agentes operando 24/7.
+        <div class="calc-result-box">
+          <div style="font-size: 0.9rem; text-transform: uppercase; color: var(--text-sub); font-weight: 700;">Economia Anual Estimada</div>
+          <div class="calc-savings" id="savings-display">R$ 57.600</div>
+          <div style="color: var(--text-muted); font-size: 0.95rem;">
+            Liberando aproximadamente <strong id="hours-saved" style="color: #fff;">80 horas mensais</strong> da sua equipe para focar em crescimento e vendas.
           </div>
+          <a href="#pricing" class="btn btn-primary" style="margin-top: 24px; width: 100%;">Implantar Agentes Agora</a>
         </div>
       </div>
     </section>
 
     <!-- Pricing Section -->
     <section id="pricing" class="section container">
-      <div class="section-header">
-        <span class="section-tag">Investimento Transparente</span>
-        <h2 class="section-title">Escolha o plano ideal para a sua empresa</h2>
-        <p class="section-desc">Comece no seu computador pessoal ou escale para servidores dedicados na nuvem da sua empresa.</p>
+      <div class="section-head">
+        <span class="section-tag">Planos Transparentes</span>
+        <h2 class="section-title">Invista em produtividade contínua</h2>
+        <p style="color: var(--text-muted); font-size: 1.1rem;">Sem taxas ocultas. Escolha se prefere rodar localmente ou ter servidores dedicados gerenciados.</p>
+
+        <!-- Toggle Mensal/Anual -->
+        <div class="pricing-toggle" style="margin-top: 36px;">
+          <span>Mensal</span>
+          <label class="switch" aria-label="Alternar faturamento anual com desconto">
+            <input type="checkbox" id="pricing-switch" onchange="togglePricing(this.checked)">
+            <span class="slider"></span>
+          </label>
+          <span>Anual <strong style="color: var(--success); font-size: 0.85rem; background: rgba(16, 185, 129, 0.15); padding: 3px 8px; border-radius: 6px;">20% OFF</strong></span>
+        </div>
       </div>
 
       <div class="pricing-grid">
         <!-- Community -->
         <div class="pricing-card">
           <h3>Community Desktop</h3>
-          <p style="color: var(--text-sub); font-size: 0.9rem; margin-top: 4px;">Para profissionais e desenvolvedores individuais</p>
-          
-          <div class="price-amount">
-            R$ 0 <span class="price-period">/ grátis para sempre</span>
+          <p style="color: var(--text-sub); font-size: 0.92rem; margin-top: 6px;">Para devs e autônomos</p>
+
+          <div class="price-value">
+            R$ 0 <span style="font-size: 1rem; color: var(--text-sub); font-weight: 500;">/ grátis</span>
           </div>
 
-          <ul class="price-features">
-            <li>✓ Aplicativo Desktop nativo (Mac e Windows)</li>
-            <li>✓ Agentes ilimitados no computador local</li>
-            <li>✓ Integração com Claude, OpenAI e Gemini</li>
-            <li>✓ Automação com Navegador CDP</li>
-            <li>✓ Ferramentas MCP ilimitadas</li>
-            <li>✓ Código 100% aberto e auditável</li>
+          <ul class="price-features-list">
+            <li><span class="check-mark">✓</span> Aplicativo Nativo (Windows e macOS)</li>
+            <li><span class="check-mark">✓</span> Agentes ilimitados na máquina local</li>
+            <li><span class="check-mark">✓</span> Integração com Claude, OpenAI e Gemini</li>
+            <li><span class="check-mark">✓</span> Navegador CDP e Computer Use</li>
+            <li><span class="check-mark">✓</span> Servidores MCP ilimitados</li>
+            <li><span class="check-mark">✓</span> Código 100% auditável</li>
           </ul>
 
           <a href="#download" class="btn btn-ghost" style="width: 100%;">Baixar Instalador</a>
         </div>
 
-        <!-- Cloud Managed -->
+        <!-- Pro Cloud -->
         <div class="pricing-card featured">
-          <div class="badge-featured">Mais Escolhido</div>
+          <div class="featured-badge">Recomendado</div>
           <h3>AsixBot Cloud Pro</h3>
-          <p style="color: var(--text-sub); font-size: 0.9rem; margin-top: 4px;">Servidor dedicado em nuvem gerenciado para o seu time</p>
-          
-          <div class="price-amount">
-            R$ 349 <span class="price-period">/ mês</span>
+          <p style="color: var(--text-sub); font-size: 0.92rem; margin-top: 6px;">Servidor dedicado 24/7 gerenciado</p>
+
+          <div class="price-value" id="pro-price">
+            R$ 349 <span style="font-size: 1rem; color: var(--text-sub); font-weight: 500;">/ mês</span>
           </div>
 
-          <ul class="price-features">
-            <li>✓ <strong>Tudo do Desktop, mais:</strong></li>
-            <li>✓ 1 Servidor em Nuvem 24/7 de alta velocidade</li>
-            <li>✓ Integração ativa com <strong>WhatsApp Business</strong></li>
-            <li>✓ Integração ativa com <strong>Slack e Telegram</strong></li>
-            <li>✓ Rotinas agendadas contínuas</li>
-            <li>✓ Acesso compartilhado para até 5 colaboradores</li>
-            <li>✓ Backup diário automático das memórias e banco</li>
+          <ul class="price-features-list">
+            <li><span class="check-mark">✓</span> <strong>Tudo do Desktop, mais:</strong></li>
+            <li><span class="check-mark">✓</span> 1 Servidor em Nuvem 24/7 dedicado</li>
+            <li><span class="check-mark">✓</span> <strong>WhatsApp Business</strong> ativo em tempo real</li>
+            <li><span class="check-mark">✓</span> Integração <strong>Slack & Telegram</strong></li>
+            <li><span class="check-mark">✓</span> Rotinas agendadas contínuas</li>
+            <li><span class="check-mark">✓</span> Até 5 colaboradores conectados</li>
+            <li><span class="check-mark">✓</span> Backups diários criptografados</li>
           </ul>
 
-          <a href="https://wa.me/?text=Olá,%20quero%20assinar%20o%20AsixBot%20Cloud%20Pro" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width: 100%;">Começar Agora</a>
+          <a href="https://wa.me/?text=Olá,%20gostaria%20de%20assinar%20o%20AsixBot%20Cloud%20Pro" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="width: 100%;">Começar Agora</a>
         </div>
 
-        <!-- Enterprise On-Premises -->
+        <!-- Enterprise On-Prem -->
         <div class="pricing-card">
           <h3>Enterprise On-Premises</h3>
-          <p style="color: var(--text-sub); font-size: 0.9rem; margin-top: 4px;">Para grandes empresas, saúde, finanças e escritórios</p>
-          
-          <div class="price-amount">
-            Sob Consulta <span class="price-period">/ anual</span>
+          <p style="color: var(--text-sub); font-size: 0.92rem; margin-top: 6px;">Para grandes empresas e reguladas</p>
+
+          <div class="price-value">
+            Custom <span style="font-size: 1rem; color: var(--text-sub); font-weight: 500;">/ anual</span>
           </div>
 
-          <ul class="price-features">
-            <li>✓ <strong>Tudo do Pro, mais:</strong></li>
-            <li>✓ Instalação no seu próprio datacenter / VPC (AWS, Azure)</li>
-            <li>✓ Suporte a modelos locais 100% offline (Ollama / vLLM)</li>
-            <li>✓ Usuários e servidores ilimitados</li>
-            <li>✓ SLA de suporte com resposta em até 2 horas</li>
-            <li>✓ Treinamento de equipe e setup de agentes customizados</li>
-            <li>✓ Acordo formal de confidencialidade (NDA) e LGPD</li>
+          <ul class="price-features-list">
+            <li><span class="check-mark">✓</span> <strong>Tudo do Pro, mais:</strong></li>
+            <li><span class="check-mark">✓</span> Instalação na sua VPC (AWS, Azure, GCP)</li>
+            <li><span class="check-mark">✓</span> Suporte a LLMs 100% offline (Ollama / vLLM)</li>
+            <li><span class="check-mark">✓</span> Usuários e servidores ilimitados</li>
+            <li><span class="check-mark">✓</span> SLA de atendimento em até 2 horas</li>
+            <li><span class="check-mark">✓</span> Consultoria técnica de criação de agentes</li>
+            <li><span class="check-mark">✓</span> Acordo formal de confidencialidade (NDA)</li>
           </ul>
 
-          <a href="https://wa.me/?text=Olá,%20gostaria%20de%20uma%20proposta%20do%20AsixBot%20Enterprise%20On-Premises" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="width: 100%;">Falar com Especialista</a>
+          <a href="https://wa.me/?text=Olá,%20gostaria%20de%20uma%20proposta%20do%20AsixBot%20Enterprise" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="width: 100%;">Falar com Especialista</a>
         </div>
       </div>
     </section>
 
-    <!-- Download Section -->
+    <!-- Download Banner -->
     <section id="download" class="section container">
-      <div class="cta-banner">
-        <h2>Baixe o AsixBot v0.65.0 Agora Mesmo</h2>
-        <p>Instale o aplicativo Desktop e monte sua primeira equipe de agentes de inteligência artificial em menos de 2 minutos.</p>
+      <div class="cta-box">
+        <h2>Pronto para elevar a produtividade da sua empresa?</h2>
+        <p style="color: var(--text-muted); font-size: 1.15rem; max-width: 650px; margin: 0 auto 36px;">
+          Baixe o instalador oficial do AsixBot ou configure seu servidor Linux em minutos.
+        </p>
 
         <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 16px;">
           <a href="https://github.com/evo06/asixbot/releases/download/v0.65.0/AsixBot-0.65.0-x64.exe" class="btn btn-primary btn-lg">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" role="img" aria-label="Windows"><title>Windows</title><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4h-13.051M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.851"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" role="img" aria-label="Windows">
+              <title>Windows</title>
+              <path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4h-13.051M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-13.051-1.851"/>
+            </svg>
             Baixar para Windows (.exe)
           </a>
 
           <a href="https://github.com/evo06/asixbot/releases/download/v0.65.0/AsixBot-0.65.0-arm64.dmg" class="btn btn-ghost btn-lg">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" role="img" aria-label="macOS"><title>macOS</title><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.42c.64-.78 1.08-1.87.96-2.96-.94.04-2.07.63-2.73 1.4-.58.67-1.09 1.77-.96 2.84 1.05.08 2.1-.53 2.73-1.28z"/></svg>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" role="img" aria-label="macOS">
+              <title>macOS</title>
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.42c.64-.78 1.08-1.87.96-2.96-.94.04-2.07.63-2.73 1.4-.58.67-1.09 1.77-.96 2.84 1.05.08 2.1-.53 2.73-1.28z"/>
+            </svg>
             Baixar para macOS (.dmg)
-          </a>
-
-          <a href="https://github.com/evo06/asixbot" target="_blank" rel="noopener noreferrer" class="btn btn-ghost btn-lg">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" role="img" aria-label="GitHub Repo"><title>GitHub Repo</title><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-            Ver no GitHub
           </a>
         </div>
       </div>
     </section>
 
-    <!-- FAQ Section -->
+    <!-- FAQ -->
     <section id="faq" class="section container">
-      <div class="section-header">
-        <span class="section-tag">Dúvidas Frequentes</span>
-        <h2 class="section-title">Perguntas e Respostas</h2>
+      <div class="section-head">
+        <span class="section-tag">Perguntas Frequentes</span>
+        <h2 class="section-title">Tudo o que você precisa saber</h2>
       </div>
 
-      <div class="faq-container">
+      <div class="faq-wrap">
         <details>
-          <summary>Como o AsixBot garante a privacidade dos dados da minha empresa?</summary>
-          <div class="faq-content">
-            Diferente de soluções comuns de SaaS centralizadas, o AsixBot armazena todas as mensagens, memórias, sessões e arquivos em um banco de dados local (SQLite) criptografado dentro do próprio dispositivo ou servidor da sua empresa. Os dados nunca são salvos em servidores compartilhados de terceiros e nunca são usados para treinar modelos de inteligência artificial.
+          <summary>Como o AsixBot garante que os dados da minha empresa não vazem?</summary>
+          <div class="faq-answer">
+            O AsixBot utiliza arquitetura local-first. Ao contrário de plataformas comuns em nuvem, todas as memórias, históricos e arquivos do seu time são gravados em um banco de dados local SQLite criptografado dentro da sua infraestrutura. Nenhuma mensagem ou dado de cliente é vendido ou usado para treinar modelos públicos de IA.
           </div>
         </details>
 
         <details>
-          <summary>Quais modelos de Inteligência Artificial posso utilizar?</summary>
-          <div class="faq-content">
-            Você tem total liberdade: pode conectar chaves da Anthropic (Claude 3.7 / 3.5 Sonnet), OpenAI (GPT-4o, o3-mini), Google Gemini (2.5 Pro / Flash), DeepSeek ou até rodar modelos totalmente locais e privados usando Ollama ou vLLM, sem pagar por tokens externos.
+          <summary>Preciso de conhecimentos de programação para usar os agentes?</summary>
+          <div class="faq-answer">
+            Não. A criação de agentes é 100% orientada a instruções em linguagem natural. Você descreve a função do agente (ex: "Você é nosso consultor de vendas no WhatsApp", "Você é nosso auditor financeiro"), define as ferramentas que ele tem acesso e ele começa a operar imediatamente.
           </div>
         </details>
 
         <details>
-          <summary>Como funciona a integração com WhatsApp e Slack?</summary>
-          <div class="faq-content">
-            O AsixBot possui um orquestrador nativo para cada plataforma. Ao conectar o número do WhatsApp corporativo ou o bot do Slack, todas as mensagens recebidas são roteadas diretamente para os agentes designados, que respondem em linguagem natural, executam ações e enviam relatórios e arquivos.
+          <summary>Como funciona a automação do navegador sem API?</summary>
+          <div class="faq-answer">
+            O AsixBot inclui um driver CDP (Chrome DevTools Protocol) nativo. O agente é capaz de acessar qualquer endereço web, preencher campos, clicar em botões, resolver formulários de login com senhas seguras do AsixBot Vault e extrair tabelas ou relatórios em PDF/CSV exatamente como um operador humano faria.
           </div>
         </details>
 
         <details>
-          <summary>O que é o modo Computer Use e automação de navegador?</summary>
-          <div class="faq-content">
-            É a capacidade do agente enxergar a tela, movimentar o mouse, clicar, digitar e navegar na internet através de uma instância dedicada do Chromium. Isso permite que ele execute tarefas em sistemas corporativos legados que não possuem APIs abertas (como ERPs, portais bancários e CRMs).
-          </div>
-        </details>
-
-        <details>
-          <summary>Posso contratar um plano corporativo com suporte e instalação?</summary>
-          <div class="faq-content">
-            Sim! Nós oferecemos suporte de implementação técnica para empresas que desejam subir o AsixBot em servidores privados (AWS, Azure, Google Cloud ou servidor físico local), além de consultoria para criação de agentes personalizados para suas operações de vendas, suporte e financeiro.
+          <summary>Posso rodar com modelos de inteligência artificial 100% offline?</summary>
+          <div class="faq-answer">
+            Sim. Através da integração nativa com Ollama e vLLM, você pode conectar modelos open-weights (como Llama 3, DeepSeek R1, Qwen ou Mistral) rodando na sua própria GPU local, eliminando qualquer custo de token e garantindo conformidade para dados ultrassensíveis.
           </div>
         </details>
       </div>
@@ -1303,56 +1304,190 @@
   <!-- Footer -->
   <footer>
     <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <div class="brand-logo">
+      <div class="footer-cols">
+        <div>
+          <div class="brand">
             <div class="brand-icon">
-              <svg viewBox="0 0 24 24" role="img" aria-label="AsixBot Logo"><title>AsixBot Logo</title><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" role="img" aria-label="AsixBot Logo">
+                <title>AsixBot Logo</title>
+                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+              </svg>
             </div>
             <span>AsixBot</span>
           </div>
-          <p>
-            Plataforma de inteligência artificial autônoma para empresas que exigem controle, automação real e soberania sobre seus dados.
+          <p style="color: var(--text-muted); font-size: 0.95rem; margin-top: 16px; max-width: 320px;">
+            Plataforma corporativa de agentes de inteligência artificial autônomos. Construída com privacidade local, WebRTC e soberania digital.
           </p>
         </div>
 
-        <div class="footer-col">
+        <div>
           <h5>Produto</h5>
           <ul>
+            <li><a href="#demo">Demo Interativa</a></li>
             <li><a href="#features">Recursos</a></li>
-            <li><a href="#como-funciona">Como Funciona</a></li>
-            <li><a href="#servidor">Modo Servidor</a></li>
-            <li><a href="#pricing">Planos & Preços</a></li>
+            <li><a href="#calculadora">Calculadora ROI</a></li>
+            <li><a href="#pricing">Planos</a></li>
             <li><a href="#download">Downloads</a></li>
           </ul>
         </div>
 
-        <div class="footer-col">
-          <h5>Ecossistema</h5>
+        <div>
+          <h5>Comunidade</h5>
           <ul>
-            <li><a href="https://github.com/evo06/asixbot" target="_blank" rel="noopener noreferrer">GitHub Oficial</a></li>
-            <li><a href="https://github.com/evo06/asixbot/releases" target="_blank" rel="noopener noreferrer">Notas de Atualização</a></li>
-            <li><a href="https://modelcontextprotocol.io/" target="_blank" rel="noopener noreferrer">Servidores MCP</a></li>
-            <li><a href="https://github.com/evo06/asixbot/issues" target="_blank" rel="noopener noreferrer">Suporte Comunitário</a></li>
+            <li><a href="https://github.com/evo06/asixbot" target="_blank" rel="noopener noreferrer">Repositório GitHub</a></li>
+            <li><a href="https://github.com/evo06/asixbot/releases" target="_blank" rel="noopener noreferrer">Releases & Binários</a></li>
+            <li><a href="https://github.com/evo06/asixbot/issues" target="_blank" rel="noopener noreferrer">Reportar Problemas</a></li>
           </ul>
         </div>
 
-        <div class="footer-col">
-          <h5>Empresa</h5>
+        <div>
+          <h5>Contato</h5>
           <ul>
-            <li><a href="https://wa.me/?text=Olá,%20quero%20falar%20com%20a%20equipe%20do%20AsixBot" target="_blank" rel="noopener noreferrer">Falar com Vendas</a></li>
-            <li><a href="#faq">Perguntas Frequentes</a></li>
+            <li><a href="https://wa.me/?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20o%20AsixBot" target="_blank" rel="noopener noreferrer">WhatsApp Comercial</a></li>
             <li><a href="mailto:contato@asixbot.com">contato@asixbot.com</a></li>
           </ul>
         </div>
       </div>
 
-      <div class="footer-bottom">
+      <div class="footer-bar">
         <div>© 2026 AsixBot. Todos os direitos reservados.</div>
-        <div>Construído com privacidade local, WebRTC e soberania de dados.</div>
+        <div>Desenvolvido com padrões Awwwards, privacidade LGPD e WebRTC.</div>
       </div>
     </div>
   </footer>
 
+  <!-- Interactive Scripts -->
+    <script>
+    const sandboxData = {
+      whatsapp: {
+        title: "Atendimento & Qualificação no WhatsApp",
+        userMsg: "Cliente no WhatsApp: 'Olá! Vocês oferecem integração com ERP Totvs e qual o prazo de implementação?'",
+        agentName: "Consultor Vendas (Agente AsixBot WhatsApp)",
+        agentText: "Olá! Sim, integramos com o Totvs via nosso protocolo MCP e automação CDP. O prazo médio de ativação dos agentes é de apenas 48 horas.",
+        actionLog: "✓ Mensagem recebida via WhatsApp Ingress webhook\n✓ Consulta de compatibilidade efetuada no Knowledge Base local\n✓ Lead qualificado como 'Alta Prioridade' e salvo no AsixBot CRM\n✓ Resposta formatada e enviada via WhatsApp em 1.2 segundos"
+      },
+      financeiro: {
+        title: "Conciliação Automática no Navegador CDP",
+        userMsg: "Diretoria: 'Auditor, entre no banco Itaú Empresas, exporte os extratos de ontem e compare com as notas fiscais do sistema.'",
+        agentName: "Auditor Conciliador (Agente AsixBot CDP)",
+        agentText: "Processo concluído com sucesso. 182 notas conciliadas automaticamente. Encontrei apenas 1 divergência de R$ 14,50 que já foi sinalizada no relatório.",
+        actionLog: "✓ Navegador Chromium CDP iniciado em modo headless\n✓ Autenticação realizada com chave criptografada do AsixBot Vault\n✓ 182 lançamentos OFX lidos e cruzados com o banco SQLite\n✓ Relatório detalhado gerado em ~/AsixBot/Shared/conciliacao.pdf"
+      },
+      seguranca: {
+        title: "Auditoria de Segurança & Conformidade LGPD",
+        userMsg: "Compliance: 'Faça uma varredura nas conversas dos últimos 7 dias e certifique-se de que nenhum dado de cartão ou senha ficou exposto.'",
+        agentName: "Guardião LGPD (Agente AsixBot Segurança)",
+        agentText: "Varredura completa concluída em 3.420 mensagens. Zero dados de cartão expostos. Todos os segredos foram ofuscados e armazenados no Vault.",
+        actionLog: "✓ Varredura regex e semântica aplicada sobre 3.420 mensagens\n✓ 100% das chaves e senhas mantidas sob criptografia AES-256 no chaveiro do SO\n✓ Log de auditoria em conformidade com as diretrizes da ANPD gerado"
+      }
+    };
+
+    function switchSandbox(key, button) {
+      document.querySelectorAll(".sandbox-tab-btn").forEach((btn) => {
+        btn.classList.remove("active");
+      });
+      document.querySelectorAll(".agent-item").forEach((item) => {
+        item.classList.remove("selected");
+      });
+
+      if (button) button.classList.add("active");
+      const navItem = document.getElementById(`nav-item-${key}`);
+      if (navItem) navItem.classList.add("selected");
+
+      const data = sandboxData[key];
+      const container = document.getElementById("sandbox-content");
+      if (!container || !data) return;
+
+      container.innerHTML = `
+        <div style="font-size: 0.82rem; text-transform: uppercase; color: var(--primary-light); font-weight: 700; letter-spacing: 0.05em;">
+          ${data.title}
+        </div>
+        
+        <div class="chat-bubble">
+          <strong>Entrada Externa:</strong> ${data.userMsg}
+        </div>
+
+        <div class="chat-bubble agent-response">
+          <strong style="color: var(--primary-light);">${data.agentName}:</strong>
+          <p style="margin-top: 6px;">${data.agentText}</p>
+          <div class="code-box">${data.actionLog.replace(/\n/g, "<br>")}</div>
+        </div>
+      `;
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const tabButtons = document.querySelectorAll(".sandbox-tab-btn");
+      if (tabButtons[0]) {
+        tabButtons[0].addEventListener("click", () => switchSandbox("whatsapp", tabButtons[0]));
+      }
+      if (tabButtons[1]) {
+        tabButtons[1].addEventListener("click", () => switchSandbox("financeiro", tabButtons[1]));
+      }
+      if (tabButtons[2]) {
+        tabButtons[2].addEventListener("click", () => switchSandbox("seguranca", tabButtons[2]));
+      }
+
+      const navWhatsapp = document.getElementById("nav-item-whatsapp");
+      if (navWhatsapp && tabButtons[0]) {
+        navWhatsapp.addEventListener("click", () => switchSandbox("whatsapp", tabButtons[0]));
+      }
+      const navFinanceiro = document.getElementById("nav-item-financeiro");
+      if (navFinanceiro && tabButtons[1]) {
+        navFinanceiro.addEventListener("click", () => switchSandbox("financeiro", tabButtons[1]));
+      }
+      const navSeguranca = document.getElementById("nav-item-seguranca");
+      if (navSeguranca && tabButtons[2]) {
+        navSeguranca.addEventListener("click", () => switchSandbox("seguranca", tabButtons[2]));
+      }
+
+      // Initial tab
+      switchSandbox("whatsapp", tabButtons[0]);
+
+      // Copy install box
+      const quickBox = document.getElementById("quick-install-box");
+      if (quickBox) {
+        quickBox.addEventListener("click", () => {
+          navigator.clipboard.writeText("curl -fsSL https://asixbot.run/install.sh | bash");
+          const btn = quickBox.querySelector(".copy-btn");
+          if (btn) {
+            btn.textContent = "Copiado!";
+            setTimeout(() => {
+              btn.textContent = "Copiar";
+            }, 2000);
+          }
+        });
+      }
+
+      // Slider
+      const slider = document.getElementById("hours-slider");
+      if (slider) {
+        slider.addEventListener("input", (e) => {
+          const val = Number(e.target.value);
+          const hoursDisp = document.getElementById("hours-display");
+          if (hoursDisp) hoursDisp.textContent = `${val} horas`;
+          const monthlyHours = val * 4;
+          const annualSavings = monthlyHours * 12 * 60;
+          const savDisp = document.getElementById("savings-display");
+          if (savDisp) savDisp.textContent = `R$ ${annualSavings.toLocaleString("pt-BR")}`;
+          const savedDisp = document.getElementById("hours-saved");
+          if (savedDisp) savedDisp.textContent = `${monthlyHours} horas mensais`;
+        });
+      }
+
+      // Pricing switch
+      const prSwitch = document.getElementById("pricing-switch");
+      if (prSwitch) {
+        prSwitch.addEventListener("change", (e) => {
+          const priceElem = document.getElementById("pro-price");
+          if (!priceElem) return;
+          if (e.target.checked) {
+            priceElem.innerHTML = 'R$ 279 <span style="font-size: 1rem; color: var(--text-sub); font-weight: 500;">/ mês (faturado anual)</span>';
+          } else {
+            priceElem.innerHTML = 'R$ 349 <span style="font-size: 1rem; color: var(--text-sub); font-weight: 500;">/ mês</span>';
+          }
+        });
+      }
+    });
+  </script>
 </body>
 </html>
