@@ -6,7 +6,7 @@
   <meta name="color-scheme" content="dark">
   <title>AsixBot — Workspace Local-First & Servidor Autônomo para Agentes de IA</title>
   <meta name="description" content="O AsixBot é um workspace desktop e servidor autônomo para colegas de trabalho de IA persistentes. Rode Claude Code, Codex, Gemini, Grok, Cursor e WhatsApp em produção com privacidade LGPD.">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'%3E%3Crect width='240' height='240' rx='50' fill='%23d6adf2'/%3E%3Cpolyline fill='none' stroke='%23040007' stroke-width='11' stroke-linecap='round' stroke-linejoin='round' points='43.55 93.61 64.69 81.41 36.48 108.04 79.67 83.11 35.93 122.88 91.58 90.74 38.9 132.69 97.66 98.76 42.44 138.88 100.43 105.4 46.9 143.83 101.97 112.04 55.08 149.51 101.83 122.52 73.01 152.43 94.14 140.23'/%3E%3Cpolyline fill='none' stroke='%23040007' stroke-width='11' stroke-linecap='round' stroke-linejoin='round' points='145.65 93.61 166.79 81.41 140.83 101.52 175.58 81.46 138.3 109.53 183.18 83.63 137.55 117.43 189.67 87.33 139.67 129.39 197.88 95.78 142.92 136.32 201.52 102.48 149.03 143.86 204.07 112.08 159.14 150.37 203.51 124.75 169.28 152.61 199.82 134.98'/%3E%3C/svg%3E">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 240'%3E%3Crect width='240' height='240' rx='54' fill='%23141414'/%3E%3Crect x='10' y='10' width='220' height='220' rx='46' fill='none' stroke='%23d6adf2' stroke-width='6' stroke-opacity='0.45'/%3E%3Cpath d='M78 36h84l14 18H64l14-18Z' fill='%23d6adf2'/%3E%3Crect x='30' y='68' width='180' height='104' rx='34' fill='%2309090c' stroke='%23d6adf2' stroke-width='7'/%3E%3Crect x='58' y='98' width='44' height='44' rx='14' fill='%23d6adf2'/%3E%3Crect x='138' y='98' width='44' height='44' rx='14' fill='%2361c985'/%3E%3Ccircle cx='86' cy='112' r='6' fill='%23ffffff'/%3E%3Ccircle cx='166' cy='112' r='6' fill='%23ffffff'/%3E%3Cpath d='M92 196h56' stroke='%23d6adf2' stroke-width='8' stroke-linecap='round'/%3E%3C/svg%3E">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -170,18 +170,21 @@
     }
 
     /* ==========================================================================
-       Interactive Blinking AppLogo Mark
+       Interactive AsixBot Cybernetic Visor Emblem
        ========================================================================== */
     .app-logo {
-      --app-logo-bg: var(--brand-lilac);
-      --app-logo-eye: var(--brand-eye);
+      --app-logo-bg: #16161a;
+      --app-logo-eye: var(--brand-lilac);
       position: relative;
       display: inline-block;
       overflow: hidden;
-      border-radius: 20.8%;
+      border-radius: 22.5%;
       isolation: isolate;
       vertical-align: middle;
       user-select: none;
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.18),
+        0 8px 22px rgba(0, 0, 0, 0.38);
     }
 
     .app-logo-bg {
@@ -190,21 +193,16 @@
     }
 
     .app-logo-eye {
-      fill: none;
-      stroke: var(--app-logo-eye);
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      stroke-width: 9.5px;
       pointer-events: none;
       transform-box: view-box;
     }
 
     .app-logo-eye-left {
-      transform-origin: 28.7% 48.7%;
+      transform-origin: 80px 120px;
     }
 
     .app-logo-eye-right {
-      transform-origin: 71.2% 48.8%;
+      transform-origin: 160px 120px;
     }
 
     .app-logo-eye-motion {
@@ -214,11 +212,11 @@
       transition: transform 180ms cubic-bezier(0.23, 1, 0.32, 1);
     }
 
-    .app-logo[data-blink="true"] .app-logo-eye {
+    .app-logo:where([data-blink="true"]) .app-logo-eye {
       animation: app-logo-blink 190ms cubic-bezier(0.77, 0, 0.175, 1);
     }
 
-    .app-logo[data-wink="true"] .app-logo-eye-right {
+    .app-logo:where([data-wink="true"]) .app-logo-eye-right {
       animation: app-logo-blink 320ms cubic-bezier(0.23, 1, 0.32, 1);
     }
 
@@ -909,19 +907,25 @@
     }
 
     .bloub-avatar {
-      width: 34px;
-      height: 34px;
-      border-radius: var(--radius-pill);
+      width: 36px;
+      height: 36px;
+      border-radius: 11px;
       display: grid;
       place-items: center;
       flex: 0 0 auto;
       position: relative;
+      background: #141417;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.12),
+        0 4px 12px rgba(0, 0, 0, 0.28);
+      overflow: hidden;
     }
 
     .bloub-avatar svg {
       width: 100%;
       height: 100%;
-      overflow: visible;
+      display: block;
     }
 
     .app-agent-meta {
@@ -2060,6 +2064,63 @@
         <symbol id="icon-arrow-right" viewBox="0 0 24 24">
           <path fill="currentColor" d="M13.17 5 11.76 6.41 16.34 11H4v2h12.34l-4.58 4.59L13.17 19l7-7-7-7Z"/>
         </symbol>
+
+        <!-- Bot Unit 01: Ada (SDR & WhatsApp Comms Unit - Mint #61c985) -->
+        <symbol id="bot-ada" viewBox="0 0 40 40">
+          <rect width="40" height="40" rx="10" fill="#111915"/>
+          <path d="M15 4h10l2 3H13l2-3Z" fill="#61c985"/>
+          <rect x="3" y="15" width="3" height="10" rx="1.5" fill="#61c985"/>
+          <rect x="34" y="15" width="3" height="10" rx="1.5" fill="#61c985"/>
+          <rect x="6" y="7" width="28" height="26" rx="8" fill="#1b2921" stroke="#61c985" stroke-width="1.8"/>
+          <rect x="9.5" y="12" width="21" height="11.5" rx="4.5" fill="#090d0b" stroke="#61c985" stroke-width="1" stroke-opacity="0.45"/>
+          <rect x="13" y="15" width="4.5" height="5.5" rx="2" fill="#61c985"/>
+          <rect x="22.5" y="15" width="4.5" height="5.5" rx="2" fill="#61c985"/>
+          <circle cx="15.8" cy="16.8" r="1" fill="#ffffff"/>
+          <circle cx="25.3" cy="16.8" r="1" fill="#ffffff"/>
+          <path d="M15 27.5h2M19 26.5v2M23 27.5h2" stroke="#61c985" stroke-width="1.8" stroke-linecap="round"/>
+        </symbol>
+
+        <!-- Bot Unit 02: Otto (Chromium CDP & ERP Scanner Unit - Lilac #d6adf2) -->
+        <symbol id="bot-otto" viewBox="0 0 40 40">
+          <rect width="40" height="40" rx="10" fill="#17121d"/>
+          <circle cx="20" cy="4.5" r="2" fill="#d6adf2"/>
+          <path d="M11 7h18l5 5v16l-5 5H11l-5-5V12l5-5Z" fill="#231b2e" stroke="#d6adf2" stroke-width="1.8" stroke-linejoin="round"/>
+          <rect x="9.5" y="13" width="21" height="10.5" rx="3.5" fill="#0b0810" stroke="#d6adf2" stroke-width="1" stroke-opacity="0.5"/>
+          <circle cx="15" cy="18.2" r="3.2" fill="none" stroke="#d6adf2" stroke-width="1.8"/>
+          <circle cx="15" cy="18.2" r="1.2" fill="#ffffff"/>
+          <rect x="21" y="16.5" width="6.5" height="3.4" rx="1.7" fill="#d6adf2"/>
+          <path d="M14 27.5h12" stroke="#d6adf2" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="2 2.5"/>
+        </symbol>
+
+        <!-- Bot Unit 03: Kira (LGPD Sentinel & AES Vault Unit - Ochre #e3b866) -->
+        <symbol id="bot-kira" viewBox="0 0 40 40">
+          <rect width="40" height="40" rx="10" fill="#1b160d"/>
+          <path d="M20 5 33 10v11c0 8.2-5.5 13.2-13 15-7.5-1.8-13-6.8-13-15V10l13-5Z" fill="#282012" stroke="#e3b866" stroke-width="1.8" stroke-linejoin="round"/>
+          <path d="M10.5 14.5h19l-2 7.5h-15l-2-7.5Z" fill="#0d0a05" stroke="#e3b866" stroke-width="1" stroke-opacity="0.55"/>
+          <polygon points="15.5,16.2 18,18.2 15.5,20.2 13,18.2" fill="#e3b866"/>
+          <polygon points="24.5,16.2 27,18.2 24.5,20.2 22,18.2" fill="#e3b866"/>
+          <circle cx="20" cy="27.5" r="2.2" fill="none" stroke="#e3b866" stroke-width="1.6"/>
+          <path d="M20 29.7v2.3" stroke="#e3b866" stroke-width="1.6" stroke-linecap="round"/>
+        </symbol>
+
+        <!-- Bot Unit 04: Helena (Fiscal Auditor & Neural Matrix Unit - Teal #6bc7d9) -->
+        <symbol id="bot-helena" viewBox="0 0 40 40">
+          <rect width="40" height="40" rx="10" fill="#0f191d"/>
+          <path d="M9 9 14 5h12l5 4v22l-5 4H14l-5-4V9Z" fill="#17282e" stroke="#6bc7d9" stroke-width="1.8" stroke-linejoin="round"/>
+          <rect x="10.5" y="12.5" width="19" height="11" rx="4" fill="#070e11" stroke="#6bc7d9" stroke-width="1" stroke-opacity="0.5"/>
+          <circle cx="14.5" cy="16.5" r="1.4" fill="#6bc7d9"/>
+          <circle cx="17.8" cy="19.5" r="1.4" fill="#6bc7d9"/>
+          <circle cx="25.5" cy="16.5" r="1.4" fill="#6bc7d9"/>
+          <circle cx="22.2" cy="19.5" r="1.4" fill="#6bc7d9"/>
+          <path d="M14 28h12M16.5 31h7" stroke="#6bc7d9" stroke-width="1.6" stroke-linecap="round"/>
+        </symbol>
+
+        <!-- Operator / Human Command Terminal Badge -->
+        <symbol id="bot-operator" viewBox="0 0 40 40">
+          <rect width="40" height="40" rx="10" fill="#1c1c21"/>
+          <rect x="5" y="7" width="30" height="26" rx="7" fill="#25252c" stroke="#979797" stroke-width="1.5" stroke-opacity="0.5"/>
+          <path d="m13 16 4.5 4-4.5 4M20.5 24H27" stroke="#f0f0f0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </symbol>
       </defs>
     </svg>
 
@@ -2070,11 +2131,21 @@
       <div class="site-header-inner">
         <a href="#top" class="site-brand" aria-label="AsixBot Início">
           <svg class="app-logo site-brand-mark" viewBox="0 0 240 240" aria-hidden="true"><title>Ícone AsixBot</title>
-            <rect class="app-logo-bg" width="240" height="240" rx="50" />
+            <rect class="app-logo-bg" width="240" height="240" rx="54" />
+            <rect x="10" y="10" width="220" height="220" rx="46" fill="none" stroke="#d6adf2" stroke-width="5" stroke-opacity="0.4" />
+            <path d="M78 34h84l14 18H64l14-18Z" fill="#d6adf2" />
+            <rect x="28" y="66" width="184" height="106" rx="34" fill="#09090c" stroke="#d6adf2" stroke-width="6" />
             <g class="app-logo-eye-motion">
-              <polyline class="app-logo-eye app-logo-eye-left" points="43.55 93.61 64.69 81.41 36.48 108.04 79.67 83.11 35.93 122.88 91.58 90.74 38.9 132.69 97.66 98.76 42.44 138.88 100.43 105.4 46.9 143.83 101.97 112.04 55.08 149.51 101.83 122.52 73.01 152.43 94.14 140.23" />
-              <polyline class="app-logo-eye app-logo-eye-right" points="145.65 93.61 166.79 81.41 140.83 101.52 175.58 81.46 138.3 109.53 183.18 83.63 137.55 117.43 189.67 87.33 139.67 129.39 197.88 95.78 142.92 136.32 201.52 102.48 149.03 143.86 204.07 112.08 159.14 150.37 203.51 124.75 169.28 152.61 199.82 134.98" />
+              <g class="app-logo-eye app-logo-eye-left">
+                <rect x="56" y="96" width="46" height="46" rx="14" fill="#d6adf2" />
+                <circle cx="86" cy="110" r="6.5" fill="#ffffff" />
+              </g>
+              <g class="app-logo-eye app-logo-eye-right">
+                <rect x="138" y="96" width="46" height="46" rx="14" fill="#61c985" />
+                <circle cx="168" cy="110" r="6.5" fill="#ffffff" />
+              </g>
             </g>
+            <path d="M92 196h56" stroke="#d6adf2" stroke-width="8" stroke-linecap="round" />
           </svg>
           <span>AsixBot</span>
           <span class="site-brand-tag">v0.65.0</span>
@@ -2128,13 +2199,23 @@
 
           <h1 id="hero-title" class="landing-title hero-stagger" style="--step: 1">
             <span>Conheça o</span>
-            <svg id="hero-mascot" class="app-logo landing-hero-logo" data-blink="false" viewBox="0 0 240 240" role="img" aria-label="Mascote interativo AsixBot">
+            <svg id="hero-mascot" class="app-logo landing-hero-logo" data-blink="false" viewBox="0 0 240 240" role="img" aria-label="Núcleo interativo AsixBot">
               <title>AsixBot — Clique para piscar</title>
-              <rect class="app-logo-bg" width="240" height="240" rx="50" />
+              <rect class="app-logo-bg" width="240" height="240" rx="54" />
+              <rect x="10" y="10" width="220" height="220" rx="46" fill="none" stroke="#d6adf2" stroke-width="5" stroke-opacity="0.45" />
+              <path d="M78 34h84l14 18H64l14-18Z" fill="#d6adf2" />
+              <rect x="28" y="66" width="184" height="106" rx="34" fill="#09090c" stroke="#d6adf2" stroke-width="6" />
               <g class="app-logo-eye-motion">
-                <polyline class="app-logo-eye app-logo-eye-left" points="43.55 93.61 64.69 81.41 36.48 108.04 79.67 83.11 35.93 122.88 91.58 90.74 38.9 132.69 97.66 98.76 42.44 138.88 100.43 105.4 46.9 143.83 101.97 112.04 55.08 149.51 101.83 122.52 73.01 152.43 94.14 140.23" />
-                <polyline class="app-logo-eye app-logo-eye-right" points="145.65 93.61 166.79 81.41 140.83 101.52 175.58 81.46 138.3 109.53 183.18 83.63 137.55 117.43 189.67 87.33 139.67 129.39 197.88 95.78 142.92 136.32 201.52 102.48 149.03 143.86 204.07 112.08 159.14 150.37 203.51 124.75 169.28 152.61 199.82 134.98" />
+                <g class="app-logo-eye app-logo-eye-left">
+                  <rect x="56" y="96" width="46" height="46" rx="14" fill="#d6adf2" />
+                  <circle cx="86" cy="110" r="6.5" fill="#ffffff" />
+                </g>
+                <g class="app-logo-eye app-logo-eye-right">
+                  <rect x="138" y="96" width="46" height="46" rx="14" fill="#61c985" />
+                  <circle cx="168" cy="110" r="6.5" fill="#ffffff" />
+                </g>
               </g>
+              <path d="M92 196h56" stroke="#d6adf2" stroke-width="8" stroke-linecap="round" />
             </svg>
             <span>AsixBot</span>
             <span class="landing-title-serif">corporativo.</span>
@@ -2231,13 +2312,8 @@
               <div class="app-sidebar-group-title">Agentes Persistentes</div>
               <div class="app-sidebar-list">
                 <button type="button" class="app-agent-row" data-active="true" data-scenario="whatsapp">
-                  <span class="bloub-avatar" style="background: #61c985">
-                    <svg viewBox="0 0 40 40" aria-hidden="true"><title>Ícone AsixBot</title>
-                      <rect x="6" y="6" width="28" height="28" rx="11" fill="#61c985"/>
-                      <circle cx="15.5" cy="18.5" r="2.2" fill="#040007"/>
-                      <circle cx="24.5" cy="18.5" r="2.2" fill="#040007"/>
-                      <path d="M16 24.5c2.2 1.8 5.8 1.8 8 0" stroke="#040007" stroke-width="2" stroke-linecap="round" fill="none"/>
-                    </svg>
+                  <span class="bloub-avatar" style="border-color: rgba(97, 201, 133, 0.45)">
+                    <svg viewBox="0 0 40 40" aria-hidden="true"><title>Ícone Ada SDR</title><use href="#bot-ada"/></svg>
                   </span>
                   <div class="app-agent-meta">
                     <div class="app-agent-name">Ada · Recepção &amp; SDR</div>
@@ -2247,13 +2323,8 @@
                 </button>
 
                 <button type="button" class="app-agent-row" data-active="false" data-scenario="cdp">
-                  <span class="bloub-avatar" style="background: #d6adf2">
-                    <svg viewBox="0 0 40 40" aria-hidden="true"><title>Ícone AsixBot</title>
-                      <circle cx="20" cy="20" r="14" fill="#d6adf2"/>
-                      <circle cx="15.5" cy="18" r="2.2" fill="#040007"/>
-                      <circle cx="24.5" cy="18" r="2.2" fill="#040007"/>
-                      <path d="M15.5 24h9" stroke="#040007" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
+                  <span class="bloub-avatar" style="border-color: rgba(214, 173, 242, 0.45)">
+                    <svg viewBox="0 0 40 40" aria-hidden="true"><title>Ícone Otto CDP</title><use href="#bot-otto"/></svg>
                   </span>
                   <div class="app-agent-meta">
                     <div class="app-agent-name">Otto · Conciliador ERP</div>
@@ -2263,13 +2334,8 @@
                 </button>
 
                 <button type="button" class="app-agent-row" data-active="false" data-scenario="lgpd">
-                  <span class="bloub-avatar" style="background: #e3b866">
-                    <svg viewBox="0 0 40 40" aria-hidden="true"><title>Ícone AsixBot</title>
-                      <rect x="6" y="6" width="28" height="28" rx="8" fill="#e3b866"/>
-                      <circle cx="15.5" cy="18.5" r="2.2" fill="#040007"/>
-                      <circle cx="24.5" cy="18.5" r="2.2" fill="#040007"/>
-                      <path d="M16.5 24c2-1 5-1 7 0" stroke="#040007" stroke-width="2" stroke-linecap="round" fill="none"/>
-                    </svg>
+                  <span class="bloub-avatar" style="border-color: rgba(227, 184, 102, 0.45)">
+                    <svg viewBox="0 0 40 40" aria-hidden="true"><title>Ícone Kira LGPD</title><use href="#bot-kira"/></svg>
                   </span>
                   <div class="app-agent-meta">
                     <div class="app-agent-name">Kira · DPO &amp; Segurança</div>
@@ -2299,8 +2365,8 @@
               </div>
 
               <div class="stream-msg">
-                <span class="bloub-avatar" style="background: #2a2a2a; color: #fff; font-size: 11px; font-weight: 600">
-                  CLI
+                <span class="bloub-avatar" style="border-color: rgba(255, 255, 255, 0.22)">
+                  <svg viewBox="0 0 40 40" aria-hidden="true"><title>Terminal Operador</title><use href="#bot-operator"/></svg>
                 </span>
                 <div class="stream-msg-body">
                   <div class="stream-msg-head">
@@ -2314,12 +2380,8 @@
               </div>
 
               <div class="stream-msg">
-                <span class="bloub-avatar" style="background: #61c985">
-                  <svg viewBox="0 0 40 40" aria-hidden="true"><title>Ícone AsixBot</title>
-                    <rect x="6" y="6" width="28" height="28" rx="11" fill="#61c985"/>
-                    <circle cx="15.5" cy="18.5" r="2.2" fill="#040007"/>
-                    <circle cx="24.5" cy="18.5" r="2.2" fill="#040007"/>
-                  </svg>
+                <span class="bloub-avatar" id="stream-agent-avatar-wrap" style="border-color: rgba(97, 201, 133, 0.45)">
+                  <svg viewBox="0 0 40 40" aria-hidden="true"><title>Ícone Agente Ativo</title><use id="stream-agent-icon" href="#bot-ada"/></svg>
                 </span>
                 <div class="stream-msg-body">
                   <div class="stream-msg-head">
@@ -2404,8 +2466,8 @@
                   </div>
                   <div class="tile-window-list">
                     <div class="stream-msg">
-                      <span class="bloub-avatar" style="background: #d6adf2; width: 30px; height: 30px">
-                        <svg viewBox="0 0 40 40"><title>Ícone AsixBot</title><circle cx="20" cy="20" r="14" fill="#d6adf2"/><circle cx="15" cy="18" r="2" fill="#040007"/><circle cx="25" cy="18" r="2" fill="#040007"/></svg>
+                      <span class="bloub-avatar" style="border-color: rgba(214, 173, 242, 0.45); width: 32px; height: 32px">
+                        <svg viewBox="0 0 40 40"><title>Ícone Otto CDP</title><use href="#bot-otto"/></svg>
                       </span>
                       <div class="stream-msg-body">
                         <div class="stream-msg-head">
@@ -2417,8 +2479,8 @@
                     </div>
 
                     <div class="stream-msg">
-                      <span class="bloub-avatar" style="background: #61c985; width: 30px; height: 30px">
-                        <svg viewBox="0 0 40 40"><title>Ícone AsixBot</title><rect x="6" y="6" width="28" height="28" rx="10" fill="#61c985"/><circle cx="15" cy="18" r="2" fill="#040007"/><circle cx="25" cy="18" r="2" fill="#040007"/></svg>
+                      <span class="bloub-avatar" style="border-color: rgba(107, 199, 217, 0.45); width: 32px; height: 32px">
+                        <svg viewBox="0 0 40 40"><title>Ícone Helena Fiscal</title><use href="#bot-helena"/></svg>
                       </span>
                       <div class="stream-msg-body">
                         <div class="stream-msg-head">
@@ -2821,10 +2883,16 @@
          ======================================================================== -->
     <footer class="landing-footer">
       <div style="display: flex; align-items: center; gap: 10px">
-        <svg class="app-logo" style="width: 22px; height: 22px" viewBox="0 0 240 240" aria-hidden="true"><title>Ícone AsixBot</title>
-          <rect class="app-logo-bg" width="240" height="240" rx="50" />
-          <polyline class="app-logo-eye" points="43.55 93.61 64.69 81.41 36.48 108.04 79.67 83.11 35.93 122.88 91.58 90.74 38.9 132.69 97.66 98.76 42.44 138.88 100.43 105.4 46.9 143.83 101.97 112.04 55.08 149.51 101.83 122.52 73.01 152.43 94.14 140.23" />
-          <polyline class="app-logo-eye" points="145.65 93.61 166.79 81.41 140.83 101.52 175.58 81.46 138.3 109.53 183.18 83.63 137.55 117.43 189.67 87.33 139.67 129.39 197.88 95.78 142.92 136.32 201.52 102.48 149.03 143.86 204.07 112.08 159.14 150.37 203.51 124.75 169.28 152.61 199.82 134.98" />
+        <svg class="app-logo" style="width: 24px; height: 24px" viewBox="0 0 240 240" aria-hidden="true"><title>Ícone AsixBot</title>
+          <rect class="app-logo-bg" width="240" height="240" rx="54" />
+          <rect x="10" y="10" width="220" height="220" rx="46" fill="none" stroke="#d6adf2" stroke-width="6" stroke-opacity="0.45" />
+          <path d="M78 34h84l14 18H64l14-18Z" fill="#d6adf2" />
+          <rect x="28" y="66" width="184" height="106" rx="34" fill="#09090c" stroke="#d6adf2" stroke-width="6" />
+          <rect x="56" y="96" width="46" height="46" rx="14" fill="#d6adf2" />
+          <rect x="138" y="96" width="46" height="46" rx="14" fill="#61c985" />
+          <circle cx="86" cy="110" r="6.5" fill="#ffffff" />
+          <circle cx="168" cy="110" r="6.5" fill="#ffffff" />
+          <path d="M92 196h56" stroke="#d6adf2" stroke-width="8" stroke-linecap="round" />
         </svg>
         <span>© 2026 AsixBot. Soberania em Agentes Autônomos.</span>
       </div>
@@ -2876,6 +2944,8 @@
         userText: "\"Ada, recebemos a planilha de pedidos da distribuidora. Verifique o estoque no portal legado, gere a proposta em PDF e responda ao cliente no WhatsApp.\"",
         agentName: "Ada · Agente SDR",
         agentModel: "Claude Code + MCP",
+        agentIcon: "#bot-ada",
+        agentBorder: "rgba(97, 201, 133, 0.45)",
         agentText: "Concluído. Consultei os 48 SKUs no ERP via sessão autenticada, apliquei a tabela corporativa com 12% de margem e enviei o PDF assinado diretamente na conversa do cliente.",
         trace: [
           "<div><span class='trace-ok'>✓</span> <span class='trace-lilac'>whatsapp.ingress</span> · Anexo <code>pedidos_lote_04.xlsx</code> lido localmente</div>",
@@ -2891,6 +2961,8 @@
         userText: "\"Otto, acesse o portal bancário e a prefeitura, baixe as notas emitidas ontem e concilie com o razão contábil.\"",
         agentName: "Otto · Conciliador ERP",
         agentModel: "OpenAI Codex + CDP",
+        agentIcon: "#bot-otto",
+        agentBorder: "rgba(214, 173, 242, 0.45)",
         agentText: "312 notas fiscais conciliadas com o extrato OFX. Identifiquei apenas 1 divergência de retenção ISS (R$ 48,20) e anexei o comprovante para revisão.",
         trace: [
           "<div><span class='trace-ok'>✓</span> <span class='trace-lilac'>vault.unlock</span> · Credencial bancária injetada via chaveiro AES-256</div>",
@@ -2906,6 +2978,8 @@
         userText: "\"Kira, execute a varredura semanal de privacidade nos canais de atendimento e gere o relatório de conformidade ANPD.\"",
         agentName: "Kira · Guardiã LGPD",
         agentModel: "Ollama Local + LGPD Skill",
+        agentIcon: "#bot-kira",
+        agentBorder: "rgba(227, 184, 102, 0.45)",
         agentText: "Varredura finalizada sobre 14.820 mensagens locais. Nenhum CPF ou dado sensível foi enviado para nuvens externas. Relatório RIPD atualizado.",
         trace: [
           "<div><span class='trace-ok'>✓</span> <span class='trace-lilac'>lgpd.pii_scanner</span> · 14.820 registros auditados em banco SQLite local</div>",
@@ -3005,6 +3079,8 @@
         const am = document.getElementById("stream-agent-model");
         const at = document.getElementById("stream-agent-text");
         const tr = document.getElementById("stream-trace-box");
+        const ai = document.getElementById("stream-agent-icon");
+        const aw = document.getElementById("stream-agent-avatar-wrap");
 
         if (ch) ch.textContent = data.channel;
         if (rt) rt.textContent = data.runtime;
@@ -3014,6 +3090,8 @@
         if (am) am.textContent = data.agentModel;
         if (at) at.textContent = data.agentText;
         if (tr) tr.innerHTML = data.trace;
+        if (ai && data.agentIcon) ai.setAttribute("href", data.agentIcon);
+        if (aw && data.agentBorder) aw.style.borderColor = data.agentBorder;
       };
 
       document.querySelectorAll("[data-scenario]").forEach((btn) => {
